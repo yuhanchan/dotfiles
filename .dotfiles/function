@@ -14,11 +14,11 @@ function avgtime(){
 }
     
 function dot(){
-    cp -r $HOME/.dotfiles .
-    cp -r $HOME/.oh-my-zsh .
-    cp $HOME/.commonrc .
-    cp $HOME/.bashrc .
-    cp $HOME/.zshrc .
+    sudo cp -r $HOME/.dotfiles .
+    sudo cp -r $HOME/.oh-my-zsh .
+    sudo cp $HOME/.commonrc .
+    sudo cp $HOME/.bashrc .
+    sudo cp $HOME/.zshrc .
     git -C $HOME/Misc/dotfiles add .
     git -C $HOME/Misc/dotfiles commit -m "update"
     git -C $HOME/Misc/dotfiles push
