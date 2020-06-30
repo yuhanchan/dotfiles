@@ -1,0 +1,4 @@
+result=( ${(Q)"${(z)$(<<\EO:result
+'hello-world' 'tutum/hello-world' 'dtzar/helm-kubectl' 'openshift/hello-openshift' 'nginxdemos/hello' 'dockercloud/hello-world' 'alpine/helm' 'karthequian/helloworld' 'devth/helm' 'crccheck/hello-world' 'helpy/helpy' 'strm/helloworld-http' 'lwolf/helm-kubectl-docker' 'hello-seattle' 'praqma/helmsman' 'ibmcom/helm' 'spotify/helios-solo' 'adgear/helm-chart-resource' 'wouterm/helloworld' 'hivesolutions/hello_appier' 'sstarcher/helm-exporter' 'ansibleplaybookbundle/hello-world-db-apb' 'ansibleplaybookbundle/hello-world-apb' 'fluxcd/helm-operator' 'linkyard/helm-chart-resource'
+EO:result
+)}"} )

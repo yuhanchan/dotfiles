@@ -1,0 +1,17 @@
+export PATH=$HOME/.pyenv/bin:$PATH
+export PATH=/opt/intel/bin:$PATH
+export PATH=/opt/intel/compilers_and_libraries/linux/mpi/intel64/bin:$PATH
+export PATH=$HOME/tools/pmu-tools:$PATH
+export PATH=$HOME/tools:$PATH
+export PATH=$HOME/eecs582/vbench/bin:$PATH
+export PATH=$JAVA_HOME/bin:$PATH
+
+export LD_LIBRARY_PATH=/usr/lib32/:$LD_LIBRARY_PATH
+export LD_LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/7/:$LD_LIBRARY_PATH
+export LD_LIBRARY_PATH=/opt/intel/mkl/lib/intel64/:$LD_LIBRARY_PATH
+export LD_LIBRARY_PATH=/opt/intel/compilers_and_libraries_2019.5.281/linux/compiler/lib/intel64_lin/:$LD_LIBRARY_PATH
+export LD_LIBRARY_PATH=/opt/intel/compilers_and_libraries_2019.5.281/linux/mpi/intel64/libfabric/lib:$LD_LIBRARY_PATH
+export LD_LIBRARY_PATH=$HOME/Projects/CrossPageSpec-Sim/include:$LD_LIBRARY_PATH
+
+export LIBRARY_PATH=$HOME/Projects/CrossPageSpec-Sim/include:$LIBRARY_PATH
+

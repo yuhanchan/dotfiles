@@ -1,0 +1,16 @@
+export DOTFILE_PATH=$HOME/.dotfiles/
+
+source $DOTFILE_PATH/env
+source $DOTFILE_PATH/path
+source $DOTFILE_PATH/alias
+source $DOTFILE_PATH/function
+source $DOTFILE_PATH/misc
+source $DOTFILE_PATH/tmp
+
+
+
+
+
+
+
+

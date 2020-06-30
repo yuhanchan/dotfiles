@@ -1,0 +1,2 @@
+export JAVA_HOME=/usr/lib/jvm/java-14-oracle
+export PIN_HOME=$HOME/eecs582/pin-2.14

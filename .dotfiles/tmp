@@ -1,0 +1,14 @@
+# Any temporary changes, variables, alias, sources, path should be put here.
+
+# env for EECS573 TLB Project
+export M5_PATH="$HOME/Projects/CrossPageSpec-Sim/fs_img/"
+export BENCHMARK_PATH="$HOME/Projects/CrossPageSpec-Sim/benchmarks/"
+export CPATH=$HOME/Projects/CrossPageSpec-Sim/include:$CPATH
+
+# env for EECS582
+export VBENCH_ROOT="$HOME/eecs582/vbench"
+export PINPATH=$HOME/eecs582/pin-2.14
+export LD_LIBRARY_PATH=/usr/local/libconfig/lib:/usr/include/hdf5/serial:$LD_LIBRARY_PATH
+
+# Vtune
+source /opt/intel/vtune_amplifier/amplxe-vars.sh
