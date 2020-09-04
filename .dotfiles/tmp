@@ -11,4 +11,7 @@ export PINPATH=$HOME/eecs582/pin-2.14
 export LD_LIBRARY_PATH=/usr/local/libconfig/lib:/usr/include/hdf5/serial:$LD_LIBRARY_PATH
 
 # Vtune
-source /opt/intel/vtune_amplifier/amplxe-vars.sh
+#source /opt/intel/vtune_amplifier/amplxe-vars.sh
+
+#Content Based Cache Project
+source /home/chenyh/Projects/ContentBasedCache/env.rc

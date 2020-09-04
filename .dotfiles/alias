@@ -33,3 +33,4 @@ alias ssstop="~/my_startup/shadowsocks.sh stop"
 alias sniper="python2 $HOME/tools/sniper/run-sniper"
 alias sniper_cpistack="python2 $HOME/tools/sniper/tools/cpistack.py"
 alias awscon="ssh -i $HOME/aws_ubuntu.pem ubuntu@$awsDnsName"
+alias h='history | grep -E -w -v "ls|cd|ssh|c|cat|man|history|zsh|ll|git|chmod|gs|gc|rm|scp|pwd|pyenv|pip|code|tmux|mkdir|htop|vim|less|top|wget|h|alias|which|df|sl|tar|la|ga|du|path|gl|touch|kill|mv|cp|grep"'

@@ -5,6 +5,8 @@ export PATH=$HOME/tools/pmu-tools:$PATH
 export PATH=$HOME/tools:$PATH
 export PATH=$HOME/eecs582/vbench/bin:$PATH
 export PATH=$JAVA_HOME/bin:$PATH
+export PATH=$HOME/.rbenv/bin:$PATH
+export PATH=$HOME/.rbenv/plugins/ruby-build/bin:$PATH
 
 export LD_LIBRARY_PATH=/usr/lib32/:$LD_LIBRARY_PATH
 export LD_LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/7/:$LD_LIBRARY_PATH
