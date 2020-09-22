@@ -15,10 +15,6 @@ alias ll='ls -lth'
 alias la='ls -alth'
 
 # Misc
-alias pushprofile='git -C ~ add .commonrc .bashrc .zshrc .zshrc.pre-oh-my-zsh && git -C ~ commit -m "update" && git -C ~ push'
-alias pushreference='git -C $HOME/Desktop/Reference/ add . && git -C $HOME/Desktop/Reference/ commit -m "update" && git -C $HOME/Desktop/Reference/ push'
-alias pushall='pushprofile && pushreference'
-alias install='sudo apt-get install'
 alias df='df -h'
 alias c='clear'
 alias lsppa='apt-cache policy | grep http | awk "{print $2 $3}" | sort -u'
