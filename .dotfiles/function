@@ -21,6 +21,9 @@ function dotupdate(){
     sudo cp -f $HOME/.commonrc $HOME/Misc/dotfiles/.commonrc
     sudo cp -f $HOME/.bashrc $HOME/Misc/dotfiles/.bashrc
     sudo cp -f $HOME/.zshrc $HOME/Misc/dotfiles/.zshrc
+    sudo cp -f $HOME/.vimrc $HOME/Misc/dotfiles/.vimrc
+    sudo cp -f $HOME/.tmux.conf $HOME/Misc/dotfiles/.tmux.conf
+    sudo cp -f $HOME/.tmux.conf.local $HOME/Misc/dotfiles/.tmux.conf.local
     git -C $HOME/Misc/dotfiles add .
     git -C $HOME/Misc/dotfiles commit -m "update"
     git -C $HOME/Misc/dotfiles push
