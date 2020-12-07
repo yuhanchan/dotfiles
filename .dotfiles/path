@@ -17,3 +17,6 @@ export LD_LIBRARY_PATH=/opt/intel/compilers_and_libraries_2019.5.281/linux/mpi/i
 export LD_LIBRARY_PATH=$HOME/Projects/CrossPageSpec-Sim/include:$LD_LIBRARY_PATH
 
 export LIBRARY_PATH=$HOME/Projects/CrossPageSpec-Sim/include:$LIBRARY_PATH
+
+export TVM_HOME=$HOME/Projects/tvm
+export PYTHONPATH=$TVM_HOME/python:$PYTHONPATH
