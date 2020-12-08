@@ -1,6 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =4
-let g:netrw_dirhist_4='/home/chenyh/eecs582/vbench/ffmpeg_build/lib/pkgconfig'
-let g:netrw_dirhist_3='/home/chenyh/eecs582/vbench/profiling/perf_record'
-let g:netrw_dirhist_2='/home/chenyh/eecs582/pin-2.14/doc/html'
-let g:netrw_dirhist_1='/home/chenyh/Fun/excel_tool'
