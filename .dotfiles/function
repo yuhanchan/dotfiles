@@ -19,6 +19,8 @@ function dotupdate(){
     sudo cp -f $HOME/.commonrc $HOME/Misc/dotfiles/.commonrc
     sudo cp -f $HOME/.bashrc $HOME/Misc/dotfiles/.bashrc
     sudo cp -f $HOME/.zshrc $HOME/Misc/dotfiles/.zshrc
+    sudo cp -r -f $HOME/.vim/. $HOME/Misc/dotfiles/.vim/
+    sudo cp -f $HOME/.vimrc $HOME/Misc/.vimrc
     git -C $HOME/Misc/dotfiles add .
     git -C $HOME/Misc/dotfiles commit -m "update"
     git -C $HOME/Misc/dotfiles push
