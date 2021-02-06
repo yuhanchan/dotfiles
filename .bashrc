@@ -1,17 +1,7 @@
 ## my settings from here
 source ~/.commonrc
-# Method 1
-# Update with path to opencv.pc
+
 export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig
-
-# Method 2
-#export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
-
-# my settings end  here
-
-# ~/.bashrc: executed by bash(1) for non-login shells.
-# see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
-# for examples
 
 # If not running interactively, don't do anything
 case $- in
@@ -99,11 +89,6 @@ fi
 # colored GCC warnings and errors
 #export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
-## some more ls aliases
-#alias ll='ls -alF'
-#alias la='ls -A'
-#alias l='ls -CF'
-
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
@@ -128,16 +113,5 @@ if ! shopt -oq posix; then
   fi
 fi
 
-## Virtual Environment Wrapper
-#alias workoncv-master="source /home/yuhan/software/OpenCV-master-py3/bin/activate"
-#
-## my path from here
-#export PATH="/home/yuhan/.pyenv/bin:$PATH"
-#eval "$(pyenv init -)"
-#eval "$(pyenv virtualenv-init -)"
-#
-## my path ends here
-export PATH=/bin/lscript:/bin/lscript:/home/chenyh/tools:/home/chenyh/tools/pmu-tools:/opt/intel/compilers_and_libraries/linux/mpi/intel64/bin:/opt/intel/bin:/home/chenyh/.pyenv/plugins/pyenv-virtualenv/shims:/home/chenyh/.pyenv/shims:/home/chenyh/.pyenv/bin:/home/chenyh/.vscode-server/bin/f359dd69833dd8800b54d458f6d37ab7c78df520/bin:/home/chenyh/tools:/home/chenyh/tools/pmu-tools:/opt/intel/compilers_and_libraries/linux/mpi/intel64/bin:/opt/intel/bin:/home/chenyh/.pyenv/plugins/pyenv-virtualenv/shims:/home/chenyh/.pyenv/shims:/home/chenyh/.pyenv/bin:/home/chenyh/.vscode-server/bin/f359dd69833dd8800b54d458f6d37ab7c78df520/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:$PATH
-# export PATH=/bin/lscript:/bin/lscript:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
