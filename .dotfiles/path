@@ -9,6 +9,12 @@ export PATH=$HOME/.rbenv/bin:$PATH
 export PATH=$HOME/.rbenv/plugins/ruby-build/bin:$PATH
 export PATH=/usr/local/texlive/2020/bin/x86_64-linux:$PATH
 
+# set PATH for cuda 10.1 installation
+if [ -d "/usr/local/cuda-11/bin/" ]; then
+    export PATH=/usr/local/cuda-11/bin:$PATH
+    export LD_LIBRARY_PATH=/usr/local/cuda-11/lib64:$LD_LIBRARY_PATH
+fi
+
 export LD_LIBRARY_PATH=/usr/lib32/:$LD_LIBRARY_PATH
 export LD_LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/7/:$LD_LIBRARY_PATH
 export LD_LIBRARY_PATH=/opt/intel/mkl/lib/intel64/:$LD_LIBRARY_PATH

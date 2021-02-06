@@ -15,8 +15,7 @@ source $DOTFILE_PATH/alias
 source $DOTFILE_PATH/function
 source $DOTFILE_PATH/misc
 source $DOTFILE_PATH/tmp
-
-
+test -f /etc/profile.d/rvm.sh && source /etc/profile.d/rvm.sh
 
 
 
