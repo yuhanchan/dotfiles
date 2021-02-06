@@ -15,7 +15,7 @@ function avgtime(){
     
 function dotupdate(){
     sudo cp -r -f $HOME/.dotfiles/. $HOME/Misc/dotfiles/.dotfiles/
-    sudo cp -r -f $HOME/.oh-my-zsh/. $HOME/Misc/dotfiles/.oh-my-zsh/
+    # sudo cp -r -f $HOME/.oh-my-zsh/. $HOME/Misc/dotfiles/.oh-my-zsh/
     sudo cp -f $HOME/.commonrc $HOME/Misc/dotfiles/.commonrc
     sudo cp -f $HOME/.bashrc $HOME/Misc/dotfiles/.bashrc
     sudo cp -f $HOME/.zshrc $HOME/Misc/dotfiles/.zshrc
