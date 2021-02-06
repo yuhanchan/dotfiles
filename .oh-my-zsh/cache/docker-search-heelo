@@ -1,4 +1,0 @@
-result=( ${(Q)"${(z)$(<<\EO:result
-'ddt1900/heeloo' 'ddt1900/heeloo_docekr' 'saadarif/hello2' 'dingzefang/heelodwde' 'sandy148/hellow'
-EO:result
-)}"} )

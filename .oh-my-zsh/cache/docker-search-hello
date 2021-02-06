@@ -1,4 +1,0 @@
-result=( ${(Q)"${(z)$(<<\EO:result
-'hello-world' 'kitematic/hello-world-nginx' 'tutum/hello-world' 'openshift/hello-openshift' 'nginxdemos/hello' 'dockercloud/hello-world' 'karthequian/helloworld' 'crccheck/hello-world' 'strm/helloworld-http' 'hello-seattle' 'ppc64le/hello-world' 'wouterm/helloworld' 'yaros1av/hello-core' 'hivesolutions/hello_appier' 'datawire/hello-world' 'dongxuny/hellotencent' 'ansibleplaybookbundle/hello-world-apb' 'silasbw/hello' 'ansibleplaybookbundle/hello-world-db-apb' 'milsonian/hellohttp' 'danieldreier/hello-pcr' 'aosqe/hello-openshift' 's390x/hello-world' 'widdix/hello' 'ocpqe/hello-pod'
-EO:result
-)}"} )
