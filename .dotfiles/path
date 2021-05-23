@@ -8,6 +8,7 @@ export PATH=$JAVA_HOME/bin:$PATH
 export PATH=$HOME/.rbenv/bin:$PATH
 export PATH=$HOME/.rbenv/plugins/ruby-build/bin:$PATH
 export PATH=/usr/local/texlive/2020/bin/x86_64-linux:$PATH
+export PATH=$HOME/tools/pin-3.2:$PATH
 
 # set PATH for cuda 10.1 installation
 if [ -d "/usr/local/cuda-11/bin/" ]; then
