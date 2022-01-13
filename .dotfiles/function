@@ -27,7 +27,7 @@ function dotpush(){
     cp -f $HOME/.vimrc $HOME/Misc/dotfiles/.vimrc
     git -C $HOME/Misc/dotfiles add .
     git -C $HOME/Misc/dotfiles commit -m "update"
-    git -C $HOME/Misc/dotfiles push
+    git -C $HOME/Misc/dotfiles push && echo -e "${GREEN}dotfiles push succeeded...${NC}"
 }
 
 function dotpull(){
@@ -44,5 +44,5 @@ function dotpull(){
     fi
 
     cp -r -f -v dotfiles/. $HOME/ && rm -rf dotfiles/ && rm $HOME/README.md && rm -rf .git
-    echo -e "${GREEN} dot file updated...${NC}"
+    echo -e "${GREEN}dotfiles pull succeeded...${NC}"
 }
