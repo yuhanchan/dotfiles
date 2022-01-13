@@ -5,6 +5,7 @@ currentDir=`pwd`
 # the way git does
 gitDirs=`find -type d -name ".git" | sed -e 's|.git$||' -e 's|./||' -e 's|/$||' | grep -v "^$"`
 
+rm .gitmodules
 for i in ${gitDirs[@]}
 do
         echo "dealing with $i now"
