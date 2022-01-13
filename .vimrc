@@ -10,7 +10,11 @@ set wildmenu
 set showmatch
 set incsearch
 set splitbelow
-set termsize=10x0 " for higher version, termsize should be termwinsize
+if has('termsize')
+	set termsize=10x0 
+else
+	set termwinsize=10x0
+end
 set splitright
 filetype indent on
 syntax on
