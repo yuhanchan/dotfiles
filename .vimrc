@@ -10,11 +10,12 @@ set wildmenu
 set showmatch
 set incsearch
 set splitbelow
-if has('termsize')
+if exists('termsize')
 	set termsize=10x0 
-else
+endif
+if exists('termwinsize')
 	set termwinsize=10x0
-end
+endif
 set splitright
 filetype indent on
 syntax on
