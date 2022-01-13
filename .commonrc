@@ -2,10 +2,10 @@ export DOTFILE_PATH=$HOME/.dotfiles/
 
 source $DOTFILE_PATH/env
 source $DOTFILE_PATH/path
+test -f $DOTFILE_PATH/specific && source $DOTFILE_PATH/specific
 source $DOTFILE_PATH/alias
 source $DOTFILE_PATH/function
 source $DOTFILE_PATH/misc
 test -f $DOTFIlE_PATH/tmp && source $DOTFILE_PATH/tmp
-test -f $DOTFILE_PATH/specific && source $DOTFILE_PATH/specific
 test -f /etc/profile.d/rvm.sh && source /etc/profile.d/rvm.sh
 
