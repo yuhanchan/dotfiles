@@ -41,7 +41,7 @@ function dotpull(){
         echo -e "${GREEN}git pull succeeded...${NC}"
     else
         echo -e "${RED}git pull failed, exiting...${NC}"
-        exit 1
+        return
     fi
 
     cp -r -f -v $HOME/dotfiles/. $HOME/ && rm -rf dotfiles/ && rm $HOME/README.md && rm -rf .git
