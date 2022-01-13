@@ -25,6 +25,7 @@ function dotpush(){
     cp -f $HOME/.zshrc $HOME/Misc/dotfiles/.zshrc
     cp -r -f $HOME/.vim/. $HOME/Misc/dotfiles/.vim/
     cp -f $HOME/.vimrc $HOME/Misc/dotfiles/.vimrc
+    cp -f $HOME/.tmux.conf $HOME/Misc/dotfiles/.tmux.conf
     git -C $HOME/Misc/dotfiles add .
     git -C $HOME/Misc/dotfiles commit -m "update"
     git -C $HOME/Misc/dotfiles push && echo -e "${GREEN}dotfiles push succeeded...${NC}"
