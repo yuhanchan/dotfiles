@@ -7,9 +7,5 @@ source $DOTFILE_PATH/function
 source $DOTFILE_PATH/misc
 source $DOTFILE_PATH/tmp
 test -f /etc/profile.d/rvm.sh && source /etc/profile.d/rvm.sh
-
-
-
-
-
+test -f $DOTFILE_PATH/specific && source $DOTFILE_PATH/specific
 

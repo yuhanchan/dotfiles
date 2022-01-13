@@ -27,30 +27,3 @@ function dotupdate(){
 
 }
 
-function awsset() {
-    local Tag=${1:?Usage: awsset [Tag]}
-    local DnsName
-    # query aws info
-    local output=$(aws ec2 describe-instances --query 'Reservations[].Instances[].{InstanceId:InstanceId,State:State.Name,DnsName:NetworkInterfaces[0].Association.PublicDnsName,Tag:Tags[?Key==`Name`] | [0].Value}' --output json)
-    
-    # get DnsName by Tag
-    for i in `seq 0 $(echo $output | jq 'length')`; do
-        # echo $output | jq ".[$i].InstanceId"
-        # echo $output | jq ".[$i].State"
-        # echo $output | jq ".[$i].DnsName"
-        local curTag=`echo $output | jq ".[$i].Tag"`
-        curTag=${curTag//\"/}
-        if [[ $curTag == $Tag ]]; then
-            DnsName=`echo $output | jq ".[$i].DnsName"`
-            DnsName=${DnsName//\"/}
-            break
-        fi
-    done
-    
-	if [[ -z $DnsName ]]; then
-		echo "Tag $Tag Not Found"
-		return 0
-	fi
-    export awsDnsName=$DnsName
-    echo awsDnsName set to $DnsName
-}
