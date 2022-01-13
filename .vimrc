@@ -6,21 +6,48 @@ set tabstop=4
 set softtabstop=4
 set showcmd
 set ts=4 sw=4
-filetype indent on
 set wildmenu
 set showmatch
 set incsearch
+set splitbelow
+set termsize=10x0 " for higher version, termsize should be termwinsize
+set splitright
+filetype indent on
 syntax on
 
-let mapleader = '-'
-nnoremap <leader>ev :vsplit $MYVIMRC<cr>	
+" let mapleader = '-'
+" leader
+let g:rainbow_active=1
+
+" this is to solve the issue where Alt is perceived as escape by terminal
+execute "set <M-j>=\ej"
+nnoremap <M-j> j
+execute "set <M-k>=\ek"
+nnoremap <M-k> k
+
+" remaps
+noremap <C-n> :NERDTreeToggle<CR>
+
+nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
 nnoremap <leader>" viw<esc>a"<esc>bi"<esc>lel
-inoremap jk <esc>
-onoremap p i(
 nnoremap <F3> :set hlsearch!<cr>
 nnoremap vter :vertical terminal<cr>
-noremap <C-n> :NERDTreeToggle<CR>
+nnoremap ter :terminal<cr>
+nnoremap <silent> <C-f> :Files<CR>
+nnoremap <esc><esc> :noh<return><esc>
+nnoremap <A-j> :m .+1<CR>==
+nnoremap <A-k> :m .-2<CR>==
+nnoremap U <C-R>
+
+inoremap jk <esc>
+inoremap <A-j> <Esc>:m .+1<CR>==gi
+inoremap <A-k> <Esc>:m .-2<CR>==gi
+
+vnoremap <A-j> :m '>+1<CR>gv=gv
+vnoremap <A-k> :m '<-2<CR>gv=gv
+
+onoremap p i(
 
 " move cursor in insert mode
 inoremap <C-h> <Left>
@@ -29,8 +56,12 @@ inoremap <C-j> <Down>
 inoremap <C-k> <Up>
 inoremap <C-w> <esc>wi
 inoremap <C-b> <esc>bi
+
 " to change habit
-" inoremap <esc> <nop>
+noremap <Up> <nop>
+noremap <Down> <nop>
+noremap <Left> <nop>
+noremap <Right> <nop>
 
 " typo fix
 iabbrev waht what
@@ -60,6 +91,7 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'majutsushi/tagbar'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'hardcoreplayers/oceanic-material'
+Plug 'frazrepo/vim-rainbow'
 " Shorthand notation; fetcvhes https://github.com/junegunn/vim-easy-align
 Plug 'junegunn/vim-easy-align'
 
@@ -67,7 +99,7 @@ Plug 'junegunn/vim-easy-align'
 Plug 'https://github.com/junegunn/vim-github-dashboard.git'
 
 " Multiple Plug commands can be written in a single line using | separators
-Plug 'SirVer/ultisnips' 
+Plug 'SirVer/ultisnips'
 
 " On-demand loading
 Plug 'preservim/nerdtree'
@@ -83,7 +115,8 @@ Plug 'fatih/vim-go', { 'tag': '*' }
 Plug 'nsf/gocode'
 
 " Plugin outside ~/.vim/plugged with post-update hook
-Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install } }
 
 call plug#end()
 "$$$$$$$$$$$$$$$$$$$$  Vim Plug End  $$$$$$$$$$$$$$$$$$$
@@ -95,13 +128,13 @@ autocmd VimEnter * if argc() == 0 && !exists("s:std_in") && v:this_session == ""
 " open NERDTree if dest is a folder
 autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | exe 'cd '.argv()[0] | endif
 " close window when the only window left is NERDTree
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif 
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 " :autocmd InsertEnter,InsertLeave * set cul!
 
 "$$$$$$$$$$$$$$$$$$$ Color Scheme $$$$$$$$$$$$$$$$$$$$$$
 set background=dark
 let g:gruvbox_contrast_dark="medium"
-colorscheme gruvbox 
+colorscheme gruvbox
 " let g:sonokai_style = 'maia'
 
 " for NERDCommenter
@@ -127,7 +160,7 @@ let g:NERDCommentEmptyLines = 1
 " Enable trimming of trailing whitespace when uncommenting
 let g:NERDTrimTrailingWhitespace = 1
 
-" Enable NERDCommenterToggle to check all selected lines is commented or not 
+" Enable NERDCommenterToggle to check all selected lines is commented or not
 let g:NERDToggleCheckAllLines = 1
 
 " for indent
