@@ -19,6 +19,7 @@ function avgtime(){
     
 function dotpush(){
     cp -r -f $HOME/.dotfiles/. $HOME/Misc/dotfiles/.dotfiles/
+    rm $HOME/Misc/dotfiles/.dotfiles/tmp
     # sudo cp -r -f $HOME/.oh-my-zsh/. $HOME/Misc/dotfiles/.oh-my-zsh/
     cp -f $HOME/.commonrc $HOME/Misc/dotfiles/.commonrc
     cp -f $HOME/.bashrc $HOME/Misc/dotfiles/.bashrc
