@@ -48,4 +48,4 @@ function dotpull(){
 
     cp -r -f -v $HOME/dotfiles/. $HOME/ && rm -rf dotfiles/ && rm -rf .git
     echo -e "${GREEN}dotfiles pull succeeded...${NC}"
-
+}
