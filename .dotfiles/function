@@ -46,6 +46,6 @@ function dotpull(){
         return
     fi
 
-    cp -r -f -v $HOME/dotfiles/. $HOME/ && rm -rf dotfiles/ && rm -rf .git
+    cp -r -f -v $HOME/dotfiles/. $HOME/ && rm -rf $HOME/dotfiles/ && rm -rf $HOME/.git $HOME/.gitmodules $HOME/add_submodules.sh
     echo -e "${GREEN}dotfiles pull succeeded...${NC}"
 }
