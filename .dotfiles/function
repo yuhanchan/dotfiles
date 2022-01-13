@@ -39,7 +39,7 @@ function dotpull(){
         echo -e "${GREEN}$HOME/dotfiles exists, renaming it to $HOME/dotfiles_backup...${NC}"
     fi
 
-    if git -C $HOME clone git@github.com:yuhanchan/dotfiles.git; then
+    if git -C $HOME clone --recurse-submodules git@github.com:yuhanchan/dotfiles.git; then
         echo -e "${GREEN}git pull succeeded...${NC}"
     else
         echo -e "${RED}git pull failed, exiting...${NC}"
