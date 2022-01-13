@@ -1,3 +1,7 @@
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+NC='\033[0m'
+
 function removeppa(){
     sudo add-apt-repository --remove ppa:$1
 }
@@ -13,7 +17,7 @@ function avgtime(){
 	done
 }
     
-function dotupdate(){
+function dotpush(){
     cp -r -f $HOME/.dotfiles/. $HOME/Misc/dotfiles/.dotfiles/
     # sudo cp -r -f $HOME/.oh-my-zsh/. $HOME/Misc/dotfiles/.oh-my-zsh/
     cp -f $HOME/.commonrc $HOME/Misc/dotfiles/.commonrc
@@ -24,6 +28,21 @@ function dotupdate(){
     git -C $HOME/Misc/dotfiles add .
     git -C $HOME/Misc/dotfiles commit -m "update"
     git -C $HOME/Misc/dotfiles push
-
 }
 
+function dotpull(){
+    if [ -d "$HOME/dotfiles" ]; then
+        mv $HOME/dotfiles $HOME/dotfiles_backup
+        echo -e "${GREEN}$HOME/dotfiles exists, renaming it to $HOME/dotfiles_backup...${NC}"
+    fi
+
+    if git -C $HOME/dotfiles clone git@github.com:yuhanchan/dotfiles.git; then
+        echo -e "${GREEN}git pull succeeded...${NC}"
+    else
+        echo -e "${RED}git pull failed, exiting...${NC}"
+        exit 1
+    fi
+
+    cp -r -f -v dotfiles/. $HOME/ && rm -rf dotfiles/ && rm $HOME/README.md && rm -rf .git
+    echo -e "${GREEN} dot file updated...${NC}"
+}
