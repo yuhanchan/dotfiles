@@ -23,7 +23,7 @@ function dotpush(){
         git -C $HOME/Misc/dotfiles commit -m "update"
         git -C $HOME/Misc/dotfiles push
         echo -e "${GREEN}dotfiles push succeeded...${NC}"
-    else:
+    else
         echo -e "${RED}$HOME/Misc/dotfiles not exists...${NC}"
     fi
 }
