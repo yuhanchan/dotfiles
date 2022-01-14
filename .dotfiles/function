@@ -18,9 +18,14 @@ function avgtime(){
 }
     
 function dotpush(){
-    git -C $HOME/Misc/dotfiles add .
-    git -C $HOME/Misc/dotfiles commit -m "update"
-    git -C $HOME/Misc/dotfiles push --recurse-submodule=on-demand && echo -e "${GREEN}dotfiles push succeeded...${NC}"
+    if [ -d "$HOME/Misc/dotfiles" ]; then
+        git -C $HOME/Misc/dotfiles add .
+        git -C $HOME/Misc/dotfiles commit -m "update"
+        git -C $HOME/Misc/dotfiles push
+        echo -e "${GREEN}dotfiles push succeeded...${NC}"
+    else:
+        echo -e "${RED}$HOME/Misc/dotfiles not exists...${NC}"
+    fi
 }
 
 function dotpull(){
