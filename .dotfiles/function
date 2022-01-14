@@ -18,38 +18,26 @@ function avgtime(){
 }
     
 function dotpush(){
-    cp -r -f $HOME/.dotfiles/. $HOME/Misc/dotfiles/.dotfiles/
-    rm $HOME/Misc/dotfiles/.dotfiles/tmp
-    # sudo cp -r -f $HOME/.oh-my-zsh/. $HOME/Misc/dotfiles/.oh-my-zsh/
-    cp -f $HOME/.commonrc $HOME/Misc/dotfiles/.commonrc
-    cp -f $HOME/.bashrc $HOME/Misc/dotfiles/.bashrc
-    cp -f $HOME/.zshrc $HOME/Misc/dotfiles/.zshrc
-    cp -r -f $HOME/.vim/. $HOME/Misc/dotfiles/.vim/
-    cp -f $HOME/.vimrc $HOME/Misc/dotfiles/.vimrc
-    cp -r -f $HOME/.tmux/. $HOME/Misc/dotfiles/.tmux/
-    cp -f $HOME/.tmux.conf $HOME/Misc/dotfiles/.tmux.conf
     git -C $HOME/Misc/dotfiles add .
     git -C $HOME/Misc/dotfiles commit -m "update"
     git -C $HOME/Misc/dotfiles push --recurse-submodule=on-demand && echo -e "${GREEN}dotfiles push succeeded...${NC}"
 }
 
 function dotpull(){
-    if [ -d "$HOME/dotfiles" ]; then
-        mv $HOME/dotfiles $HOME/dotfiles_backup
-        echo -e "${GREEN}$HOME/dotfiles exists, renaming it to $HOME/dotfiles_backup...${NC}"
-    fi
-
-    if git -C $HOME clone --recurse-submodules git@github.com:yuhanchan/dotfiles.git; then
-        echo -e "${GREEN}git pull succeeded...${NC}"
+    if [ -d "$HOME/Misc/dotfiles" ]; then
+        echo -e "${GREEN}$HOME/Misc/dotfiles exists, updating...${NC}"
+        git -C $HOME/Misc/dotfiles pull
     else
-        echo -e "${RED}git pull failed, exiting...${NC}"
-        return
+        echo -e "${GREEN}$HOME/Misc/dotfiles not exists, cloning...${NC}"
+        git clone --recurse-submodules git@github.com:yuhanchan/dotfiles.git $HOME/Misc/dotfiles
+        rm -rf $HOME/.dotfiles $HOME/.commonrc $HOME/.bashrc $HOME/.zshrc $HOME/.vimrc $HOME/.vim $HOME/.tmux.conf $HOME/.tmux
+        ln -s $HOME/Misc/dotfiles/.dotfiles $HOME/.dotfiles 
+        ln -s $HOME/Misc/dotfiles/.commonrc $HOME/.commonrc
+        ln -s $HOME/Misc/dotfiles/.bashrc $HOME/.bashrc
+        ln -s $HOME/Misc/dotfiles/.zshrc $HOME/.zshrc
+        ln -s $HOME/Misc/dotfiles/.vimrc $HOME/.vimrc
+        ln -s $HOME/Misc/dotfiles/.vim $HOME/.vim
+        ln -s $HOME/Misc/dotfiles/.tmux.conf $HOME/.tmux.conf
+        ln -s $HOME/Misc/dotfiles/.tmux $HOME/.tmux
     fi
-
-    cp -r -f -v $HOME/dotfiles/. $HOME/ 
-    rm -rf $HOME/dotfiles/ 
-    rm -rf $HOME/.git 
-    rm $HOME/.gitmodules 
-    rm $HOME/add_submodules.sh
-    echo -e "${GREEN}dotfiles pull succeeded...${NC}"
 }
