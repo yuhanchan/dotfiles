@@ -2,6 +2,7 @@ set nu rnu
 set cursorline
 set wrap
 " set hlsearch
+set ignorecase smartcase
 set tabstop=4
 set softtabstop=4
 set showcmd
