@@ -123,3 +123,21 @@ sudo-command-line() {
 zle -N sudo-command-line
 #定义快捷键为： [Esc] [Esc]
 bindkey "\e\e\e" sudo-command-line
+
+bindkey -v
+
+oldPS1="$PS1"
+function zle-line-init zle-keymap-select {
+    VIM_NORMAL_PROMPT="%{$fg_bold[yellow]%} [% NOR]%  %{$reset_color%}"
+    VIM_INSERT_PROMPT="%{$fg_bold[green]%} [% INS]%  %{$reset_color%}"
+    PS1="${${KEYMAP/vicmd/$VIM_NORMAL_PROMPT}/(main|viins)/$VIM_INSERT_PROMPT}$oldPS1"
+    # PS1="${${KEYMAP/vicmd/-- NORMAL --}/(main|viins)/-- INSERT --}$oldPS1"
+    PS2=$PS1
+    RPS1=""
+    RPS2=""
+    zle reset-prompt
+}
+zle -N zle-line-init
+zle -N zle-keymap-select
+# bindkey -M viins 'jk' vi-cmd-mode
+bindkey 'jk' vi-cmd-mode
