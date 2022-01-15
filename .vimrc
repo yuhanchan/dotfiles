@@ -55,6 +55,12 @@ vnoremap <A-k> :m '<-2<CR>gv=gv
 
 onoremap p i(
 
+" for indent
+nnoremap <Tab> v>
+nnoremap <S-Tab> v<
+vnoremap <Tab> >gv
+vnoremap <S-Tab> <gv
+
 " move cursor in insert mode
 inoremap <C-h> <Left>
 inoremap <C-l> <Right>
@@ -169,8 +175,3 @@ let g:NERDTrimTrailingWhitespace = 1
 " Enable NERDCommenterToggle to check all selected lines is commented or not
 let g:NERDToggleCheckAllLines = 1
 
-" for indent
-nnoremap <Tab> v>
-nnoremap <S-Tab> v<
-vnoremap <Tab> >gv
-vnoremap <S-Tab> <gv
