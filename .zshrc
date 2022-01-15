@@ -125,7 +125,7 @@ zle -N sudo-command-line
 bindkey "\e\e\e" sudo-command-line
 
 bindkey -v
-
+export KEYTIMEOUT=1
 oldPS1="$PS1"
 function zle-line-init zle-keymap-select {
     VIM_NORMAL_PROMPT="%{$fg_bold[yellow]%} [% NOR]%  %{$reset_color%}"
