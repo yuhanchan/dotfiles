@@ -115,6 +115,8 @@ Plug 'SirVer/ultisnips'
 
 " On-demand loading
 Plug 'preservim/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+let g:NERDTreeGitStatusPorcelainVersion=1
 Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
 
 " Using a non-master branch
