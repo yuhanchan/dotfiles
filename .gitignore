@@ -1,3 +1,4 @@
 .dotfiles/specific
 .dotfiles/tmp
 *.swp
+packer_compiled.lua
