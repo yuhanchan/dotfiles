@@ -7,6 +7,8 @@ vim.keybinds = {
     opts = {noremap = true, silent = true}
 }
 
+local cmd = vim.cmd
+
 -- remap jk to Esc
 vim.keybinds.gmap("i", "jk", "<Esc>", vim.keybinds.opts)
 
@@ -25,3 +27,40 @@ vim.keybinds.gmap("n", "<F3>", ":set hlsearch!<CR>", vim.keybinds.opts)
 
 -- leader + cs to perform spell check
 vim.keybinds.gmap("n", "<leader>cs", "<cmd>set spell!<CR>", vim.keybinds.opts)
+
+-- code indent and de-indent
+vim.keybinds.gmap("n", "<", "v<gn", vim.keybinds.opts)
+vim.keybinds.gmap("v", "<", "<gv", vim.keybinds.opts)
+vim.keybinds.gmap("n", ">", "v>gn", vim.keybinds.opts)
+vim.keybinds.gmap("v", ">", ">gv", vim.keybinds.opts)
+vim.keybinds.gmap("n", "<S-Tab>", "v<gn", vim.keybinds.opts)
+vim.keybinds.gmap("v", "<S-Tab>", "<gv", vim.keybinds.opts)
+vim.keybinds.gmap("n", "<Tab>", "v>gn", vim.keybinds.opts)
+vim.keybinds.gmap("v", "<Tab>", ">gv", vim.keybinds.opts)
+
+-- all split commnd start with s
+vim.keybinds.gmap("n", "sv", ":vsp<CR>", vim.keybinds.opts) -- split vertically
+vim.keybinds.gmap("n", "sh", ":sp<CR>", vim.keybinds.opts)  -- split horizontally
+-- vim.keybinds.gmap("n", "sc", "<C-w>c", vim.keybinds.opts)   -- close current split
+-- vim.keybinds.gmap("n", "so", "<C-w>o", vim.keybinds.opts) -- close others
+
+-- control split size, can also use mouse
+vim.keybinds.gmap("n", "s>", ":vertical resize +20<CR>", vim.keybinds.opts) -- adjust split size to right
+vim.keybinds.gmap("n", "s<", ":vertical resize -20<CR>", vim.keybinds.opts) -- adjust split size to left
+vim.keybinds.gmap("n", "s=", "<C-w>=", vim.keybinds.opts)                   -- adjust split to be equal size
+vim.keybinds.gmap("n", "sj", ":resize +10<CR>",vim.keybinds.opts)           -- adjust split size down
+vim.keybinds.gmap("n", "sk", ":resize -10<CR>",vim.keybinds.opts)           -- adjust split size up
+
+-- navigate between splits (panes)
+vim.keybinds.gmap("n", "<A-h>", "<C-w>h", vim.keybinds.opts)
+vim.keybinds.gmap("n", "<A-j>", "<C-w>j", vim.keybinds.opts)
+vim.keybinds.gmap("n", "<A-k>", "<C-w>k", vim.keybinds.opts)
+vim.keybinds.gmap("n", "<A-l>", "<C-w>l", vim.keybinds.opts)
+
+-- alias commands easy to mistype
+cmd(':command! WQ wq')
+cmd(':command! WQ wq')
+cmd(':command! Wq wq')
+cmd(':command! Wqa wqa')
+cmd(':command! W w')
+cmd(':command! Q q')

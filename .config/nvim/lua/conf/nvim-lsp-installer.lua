@@ -1,117 +1,77 @@
 -- https://github.com/williamboman/nvim-lsp-installer
 
--- require("nvim-lsp-installer").setup()
+local lsp_installer = require("nvim-lsp-installer")
 
--- local plugin_key = vim.u.keymap.set.nvim_lsp_installer.plugin_set
+lsp_installer.settings({
+    ui = {
+        icons = {
+            -- The list icon to use for installed servers.
+            server_installed = "✓",
+            -- The list icon to use for servers that are pending installation.
+            server_pending = "➜",
+            -- The list icon to use for servers that are not installed.
+            server_uninstalled = "◍",
+        },
+        keymaps = {
+            -- Keymap to expand a server in the UI
+            toggle_server_expand = "<CR>",
+            -- Keymap to install a server
+            install_server = "i",
+            -- Keymap to reinstall/update a server
+            update_server = "u",
+            -- Keymap to update all installed servers
+            update_all_servers = "U",
+            -- Keymap to uninstall a server
+            uninstall_server = "X",
+        },
+    },
 
--- local lsp_installer_servers = require("nvim-lsp-installer.servers")
+    -- The directory in which to install all servers.
+    -- install_root_dir = path.concat { vim.fn.stdpath "data", "lsp_servers" },
 
--- -- 使用 cmp_nvim_lsp 代替内置 omnifunc，获得更强的补全体验
--- local capabilities = vim.lsp.protocol.make_client_capabilities()
--- capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
+    pip = {
+        -- These args will be added to `pip install` calls. Note that setting extra args might impact intended behavior
+        -- and is not recommended.
+        --
+        -- Example: { "--proxy", "https://proxyserver" }
+        install_args = {},
+    },
 
--- -- WARN: lsp install 手动书写 LSP 配置文件
--- -- 名称：https://github.com/williamboman/nvim-lsp-installer#available-lsps
--- -- 配置：https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
--- -- 另外注意安装的 nodejs 和 npm 的版本要新，太久的版本会导致 lsp 无法正常工作
+    -- Controls to which degree logs are written to the log file. It's useful to set this to vim.log.levels.DEBUG when
+    -- debugging issues with server installations.
+    log_level = vim.log.levels.INFO,
 
--- local servers = {
---     sumneko_lua = require("lsp.sumneko_lua"),
---     pyright = require("lsp.pyright"),
---     tsserver = require("lsp.tsserver"),
---     html = require("lsp.html"),
---     cssls = require("lsp.cssls"),
---     gopls = require("lsp.gopls"),
---     jsonls = require("lsp.jsonls"),
---     zeta_note = require("lsp.zeta_note"),
---     vuels = require("lsp.vuels")
--- }
+    -- Limit for the maximum amount of servers to be installed at the same time. Once this limit is reached, any further
+    -- servers that are requested to be installed will be put in a queue.
+    max_concurrent_installers = 4,
+})
 
--- local function attach(client, bufnr)
---     require("aerial").on_attach(client, bufnr)
---     vim.api.nvim_buf_set_keymap(
---         bufnr,
---         "n",
---         plugin_key.lsp_definitions,
---         "<cmd>Telescope lsp_definitions theme=dropdown<CR>",
---         vim.u.keymap.opt.ns_opt
---     )
---     vim.api.nvim_buf_set_keymap(
---         bufnr,
---         "n",
---         plugin_key.lsp_references,
---         "<cmd>Telescope lsp_references theme=dropdown<CR>",
---         vim.u.keymap.opt.ns_opt
---     )
---     vim.api.nvim_buf_set_keymap(
---         bufnr,
---         "n",
---         plugin_key.diagnostics,
---         "<cmd>Telescope diagnostics theme=dropdown<CR>",
---         vim.u.keymap.opt.ns_opt
---     )
---     vim.api.nvim_buf_set_keymap(
---         bufnr,
---         "n",
---         plugin_key.lsp_code_actions,
---         "<cmd>Telescope lsp_code_actions theme=dropdown<CR>",
---         vim.u.keymap.opt.ns_opt
---     )
---     vim.api.nvim_buf_set_keymap(bufnr, "n", plugin_key.rename, "<cmd>Lspsaga rename<CR>", vim.u.keymap.opt.ns_opt)
---     vim.api.nvim_buf_set_keymap(bufnr, "n", plugin_key.hover_doc, "<cmd>Lspsaga hover_doc<CR>", vim.u.keymap.opt.ns_opt)
---     vim.api.nvim_buf_set_keymap(
---         bufnr,
---         "n",
---         plugin_key.diagnostic_jump_prev,
---         "<cmd>Lspsaga diagnostic_jump_prev<CR>",
---         vim.u.keymap.opt.ns_opt
---     )
---     vim.api.nvim_buf_set_keymap(
---         bufnr,
---         "n",
---         plugin_key.diagnostic_jump_next,
---         "<cmd>Lspsaga diagnostic_jump_next<CR>",
---         vim.u.keymap.opt.ns_opt
---     )
---     vim.api.nvim_buf_set_keymap(
---         bufnr,
---         "n",
---         plugin_key.smart_scroll_with_saga_prev,
---         "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<CR>",
---         vim.u.keymap.opt.ns_opt
---     )
---     vim.api.nvim_buf_set_keymap(
---         bufnr,
---         "n",
---         plugin_key.smart_scroll_with_saga_next,
---         "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(1)<CR>",
---         vim.u.keymap.opt.ns_opt
---     )
--- end
+local lsp_installer_servers = require("nvim-lsp-installer.servers")
 
--- -- 自动安装或启动 LanguageServers
--- for server_name, server_options in pairs(servers) do
---     local server_available, server = lsp_installer_servers.get_server(server_name)
---     -- 判断服务是否可用
---     if server_available then
---         -- 判断服务是否准备就绪，若就绪则启动服务
---         server:on_ready(
---             function()
---                 -- keybind
---                 server_options.on_attach = attach
---                 -- options config
---                 server_options.flags = {
---                     debounce_text_changes = 150
---                 }
---                 -- 代替内置 omnifunc
---                 server_options.capabilities = capabilities
---                 server:setup(server_options)
---             end
---         )
---         -- 如果语言服务器未准备就绪，则自动安装
---         if not server:is_installed() then
---             vim.notify("Install Language Server : " .. server_name, "WARN", {title = "Language Servers"})
---             server:install()
---         end
---     end
--- end
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
+
+local servers = {
+    "sumneko_lua",
+    "jedi_language_server",
+    "html",
+    "jsonls",
+}
+
+for _, server_name in pairs(servers) do
+    local server_available, server = lsp_installer_servers.get_server(server_name)
+    if server_available then
+        server:on_ready(function ()
+            -- When this particular server is ready (i.e. when installation is finished or the server is already installed),
+            -- this function will be invoked. Make sure not to also use the "catch-all" lsp_installer.on_server_ready()
+            -- function to set up your servers, because by doing so you'd be setting up the same server twice.
+            local opts = {}
+            server:setup(opts)
+        end)
+        if not server:is_installed() then
+            -- Queue the server to be installed.
+            print("Installing " .. server_name)
+            server:install()
+        end
+    end
+end

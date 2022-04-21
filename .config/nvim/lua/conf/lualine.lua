@@ -42,7 +42,8 @@ require("lualine").setup(
         sections = {
             lualine_a = {
                 {"mode", cond = disable_built_component},
-                {"filetype", cond = enable_built_component}
+                -- {"tabs", cond = disable_built_component},
+                -- {"buffers", cond = disable_built_component}
             },
             lualine_b = {
                 {"branch", cond = disable_built_component},
@@ -55,6 +56,7 @@ require("lualine").setup(
             },
             lualine_x = {
                 {"encoding", cond = disable_built_component},
+                {"hostname", cond = disable_built_component},
                 {"fileformat", cond = disable_built_component},
                 {"filetype", cond = disable_built_component}
             },
@@ -62,14 +64,17 @@ require("lualine").setup(
                 {"progress", cond = disable_built_component}
             },
             lualine_z = {
-                {"location", cond = disable_built_component}
+                -- {"location", cond = disable_built_component},
+                {'%l/%L:%c', cond = disable_built_component}
             }
         },
         inactive_sections = {
             lualine_a = {},
             lualine_b = {},
             lualine_c = {"filename"},
-            lualine_x = {"location"},
+            lualine_x = {
+                {'%l/%L:%c', cond = disable_built_component},
+            },
             lualine_y = {},
             lualine_z = {}
         },

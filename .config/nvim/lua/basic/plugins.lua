@@ -79,20 +79,36 @@ local install_plugins =
         -- view tree
         "stevearc/aerial.nvim",
         load_file = true,
-        after = {"nvim-web-devicons"}
-        -- after = {"nvim-web-devicons", "nvim-lspconfig"}
+        -- after = {"nvim-web-devicons"}
+        after = {"nvim-web-devicons", "nvim-lspconfig"}
     },
-    -- {
-    --     -- replace built-in omnifunc auto-complete
-    --     "hrsh7th/cmp-nvim-lsp",
-    --     after = "aerial.nvim"
-    -- },
-    -- {
-    --     -- LSP installer
-    --     "williamboman/nvim-lsp-installer",
-    --     load_file = false,
-    --     after = "cmp-nvim-lsp"
-    -- },
+    {
+        "hrsh7th/nvim-cmp",
+        after = "aerial.nvim"
+    },
+    {
+        "hrsh7th/cmp-buffer",
+        after = "aerial.nvim"
+    },
+    {
+        "hrsh7th/cmp-path",
+        after = "aerial.nvim"
+    },
+    {
+        "hrsh7th/cmp-cmdline",
+        after = "aerial.nvim"
+    },
+    {
+        -- replace built-in omnifunc auto-complete
+        "hrsh7th/cmp-nvim-lsp",
+        after = { "aerial.nvim", "nvim-cmp", "cmp-buffer", "cmp-path", "cmp-cmdline" }
+    },
+    {
+        -- LSP installer
+        "williamboman/nvim-lsp-installer",
+        load_file = true,
+        after = "cmp-nvim-lsp"
+    },
     -- {
     --     -- LSP progress
     --     "j-hui/fidget.nvim",
