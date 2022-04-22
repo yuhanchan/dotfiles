@@ -51,11 +51,15 @@ vim.keybinds.gmap("n", "s=", "<C-w>=", vim.keybinds.opts) -- adjust split to be 
 vim.keybinds.gmap("n", "sj", ":resize +10<CR>", vim.keybinds.opts) -- adjust split size down
 vim.keybinds.gmap("n", "sk", ":resize -10<CR>", vim.keybinds.opts) -- adjust split size up
 
--- navigate between splits (panes)
+-- navigate between windows
 vim.keybinds.gmap("n", "<A-h>", "<C-w>h", vim.keybinds.opts)
 vim.keybinds.gmap("n", "<A-j>", "<C-w>j", vim.keybinds.opts)
 vim.keybinds.gmap("n", "<A-k>", "<C-w>k", vim.keybinds.opts)
 vim.keybinds.gmap("n", "<A-l>", "<C-w>l", vim.keybinds.opts)
+
+-- navigate between tabs
+vim.keybinds.gmap("n", "<C-h>", "gT", vim.keybinds.opts)
+vim.keybinds.gmap("n", "<C-l>", "gt", vim.keybinds.opts)
 
 -- alias commands easy to mistype
 cmd(':command! WQ wq')
