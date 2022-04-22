@@ -1,3 +1,4 @@
+# This file is not used anymore
 [submodule ".vim/plugged/ultisnips"]
 	path = .vim/plugged/ultisnips
 	url = https://github.com/SirVer/ultisnips.git
