@@ -1,7 +1,10 @@
 -- https://github.com/nvim-lualine/lualine.nvim
 -- https://github.com/SmiteshP/nvim-gps
 
-local gps = require("nvim-gps")
+local ok, gps = pcall(require, "nvim-gps")
+if not ok then
+    print("Warn: tried to load nvim-gps, but file not found")
+end
 
 local filetype_table = {
     "NvimTree",
@@ -29,55 +32,61 @@ local function enable_built_component()
 end
 
 gps.setup()
-require("lualine").setup(
-    {
-        options = {
-            icons_enabled = true,
-            theme = "auto",
-            component_separators = {left = "", right = ""},
-            section_separators = {left = "", right = ""},
-            disabled_filetypes = {},
-            always_divide_middle = true
-        },
-        sections = {
-            lualine_a = {
-                {"mode", cond = disable_built_component},
-                -- {"tabs", cond = disable_built_component},
-                -- {"buffers", cond = disable_built_component}
+
+local ok, lualine = pcall(require, "lualine")
+if not ok then
+    print("Warn: tried to load lualine, but file not found")
+else
+    lualine.setup(
+        {
+            options = {
+                icons_enabled = true,
+                theme = "auto",
+                component_separators = { left = "", right = "" },
+                section_separators = { left = "", right = "" },
+                disabled_filetypes = {},
+                always_divide_middle = true
             },
-            lualine_b = {
-                {"branch", cond = disable_built_component},
-                {"diff", cond = disable_built_component},
-                {"diagnostics", cond = disable_built_component}
+            sections = {
+                lualine_a = {
+                    { "mode", cond = disable_built_component },
+                    -- {"tabs", cond = disable_built_component},
+                    -- {"buffers", cond = disable_built_component}
+                },
+                lualine_b = {
+                    { "branch", cond = disable_built_component },
+                    { "diff", cond = disable_built_component },
+                    { "diagnostics", cond = disable_built_component }
+                },
+                lualine_c = {
+                    { "filename", cond = disable_built_component },
+                    { gps.get_location, cond = gps.is_available }
+                },
+                lualine_x = {
+                    { "encoding", cond = disable_built_component },
+                    { "hostname", cond = disable_built_component },
+                    { "fileformat", cond = disable_built_component },
+                    { "filetype", cond = disable_built_component }
+                },
+                lualine_y = {
+                    { "progress", cond = disable_built_component }
+                },
+                lualine_z = {
+                    -- {"location", cond = disable_built_component},
+                    { '%l/%L:%c', cond = disable_built_component }
+                }
             },
-            lualine_c = {
-                {"filename", cond = disable_built_component},
-                {gps.get_location, cond = gps.is_available}
+            inactive_sections = {
+                lualine_a = {},
+                lualine_b = {},
+                lualine_c = { "filename" },
+                lualine_x = {
+                    { '%l/%L:%c', cond = disable_built_component },
+                },
+                lualine_y = {},
+                lualine_z = {}
             },
-            lualine_x = {
-                {"encoding", cond = disable_built_component},
-                {"hostname", cond = disable_built_component},
-                {"fileformat", cond = disable_built_component},
-                {"filetype", cond = disable_built_component}
-            },
-            lualine_y = {
-                {"progress", cond = disable_built_component}
-            },
-            lualine_z = {
-                -- {"location", cond = disable_built_component},
-                {'%l/%L:%c', cond = disable_built_component}
-            }
-        },
-        inactive_sections = {
-            lualine_a = {},
-            lualine_b = {},
-            lualine_c = {"filename"},
-            lualine_x = {
-                {'%l/%L:%c', cond = disable_built_component},
-            },
-            lualine_y = {},
-            lualine_z = {}
-        },
-        tabline = {}
-    }
-)
+            tabline = {}
+        }
+    )
+end

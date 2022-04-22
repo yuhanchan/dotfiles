@@ -1,31 +1,41 @@
 -- https://github.com/kyazdani42/nvim-tree.lua
 
-require("nvim-web-devicons").setup{ default = true }
+local ok, nvim_web_devicons = pcall(require, "nvim-web-devicons")
+if not ok then
+    print("Warn: tried to load nvim-web-devicons, but file not found")
+else
+    nvim_web_devicons.setup({ default = true })
+end
 
-require("nvim-tree").setup(
-    {
-        view = {
-            width = 30,
-            height = 30,
-            hide_root_folder = false,
-            auto_resize = true
-        },
-        diagnostics = {
-            enable = true,
-            icons = {
-                hint = "",
-                info = "",
-                warning = "",
-                error = ""
+local ok, nvim_tree = pcall(require, "nvim-tree")
+if not ok then
+    print("Warn: tried to load nvim-tree, but file not found")
+else
+    nvim_tree.setup(
+        {
+            view = {
+                width = 30,
+                height = 30,
+                hide_root_folder = false,
+                auto_resize = true
+            },
+            diagnostics = {
+                enable = true,
+                icons = {
+                    hint = "",
+                    info = "",
+                    warning = "",
+                    error = ""
+                }
+            },
+            git = {
+                enable = true,
+                ignore = true,
+                timeout = 500
             }
-        },
-        git = {
-            enable = true,
-            ignore = true,
-            timeout = 500
         }
-    }
-)
+    )
+end
 
 
 vim.g.nvim_tree_icons = {

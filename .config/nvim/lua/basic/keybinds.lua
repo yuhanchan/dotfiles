@@ -4,7 +4,7 @@ vim.keybinds = {
     bmap = vim.api.nvim_buf_set_keymap,
     dgmap = vim.api.nvim_del_keymap,
     dbmap = vim.api.nvim_buf_del_keymap,
-    opts = {noremap = true, silent = true}
+    opts = { noremap = true, silent = true }
 }
 
 local cmd = vim.cmd
@@ -22,7 +22,7 @@ vim.keybinds.gmap("n", "<C-down>", "<cmd>res -1<CR>", vim.keybinds.opts)
 vim.keybinds.gmap("n", "<C-left>", "<cmd>vertical resize-1<CR>", vim.keybinds.opts)
 vim.keybinds.gmap("n", "<C-right>", "<cmd>vertical resize+1<CR>", vim.keybinds.opts)
 
--- toggle highlight search 
+-- toggle highlight search
 vim.keybinds.gmap("n", "<F3>", ":set hlsearch!<CR>", vim.keybinds.opts)
 
 -- leader + cs to perform spell check
@@ -40,16 +40,16 @@ vim.keybinds.gmap("v", "<Tab>", ">gv", vim.keybinds.opts)
 
 -- all split commnd start with s
 vim.keybinds.gmap("n", "sv", ":vsp<CR>", vim.keybinds.opts) -- split vertically
-vim.keybinds.gmap("n", "sh", ":sp<CR>", vim.keybinds.opts)  -- split horizontally
+vim.keybinds.gmap("n", "sh", ":sp<CR>", vim.keybinds.opts) -- split horizontally
 -- vim.keybinds.gmap("n", "sc", "<C-w>c", vim.keybinds.opts)   -- close current split
 -- vim.keybinds.gmap("n", "so", "<C-w>o", vim.keybinds.opts) -- close others
 
 -- control split size, can also use mouse
 vim.keybinds.gmap("n", "s>", ":vertical resize +20<CR>", vim.keybinds.opts) -- adjust split size to right
 vim.keybinds.gmap("n", "s<", ":vertical resize -20<CR>", vim.keybinds.opts) -- adjust split size to left
-vim.keybinds.gmap("n", "s=", "<C-w>=", vim.keybinds.opts)                   -- adjust split to be equal size
-vim.keybinds.gmap("n", "sj", ":resize +10<CR>",vim.keybinds.opts)           -- adjust split size down
-vim.keybinds.gmap("n", "sk", ":resize -10<CR>",vim.keybinds.opts)           -- adjust split size up
+vim.keybinds.gmap("n", "s=", "<C-w>=", vim.keybinds.opts) -- adjust split to be equal size
+vim.keybinds.gmap("n", "sj", ":resize +10<CR>", vim.keybinds.opts) -- adjust split size down
+vim.keybinds.gmap("n", "sk", ":resize -10<CR>", vim.keybinds.opts) -- adjust split size up
 
 -- navigate between splits (panes)
 vim.keybinds.gmap("n", "<A-h>", "<C-w>h", vim.keybinds.opts)

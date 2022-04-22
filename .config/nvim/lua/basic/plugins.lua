@@ -1,7 +1,7 @@
 ---@diagnostic disable: undefined-global
 -- https://github.com/wbthomason/packer.nvim
 
-local install_plugins = 
+local install_plugins =
 {
     {
         -- packer is a plugin manager
@@ -23,9 +23,9 @@ local install_plugins =
         "nvim-treesitter/nvim-treesitter",
         run = ":TSupdate",
         load_file = true,
-        event = {"BufRead", "BufNewFile"},
-        requires = {"JoosepAlviste/nvim-ts-context-commentstring", "p00f/nvim-ts-rainbow"},
-        after = {"nvim-ts-context-commentstring", "nvim-ts-rainbow"}
+        event = { "BufRead", "BufNewFile" },
+        requires = { "JoosepAlviste/nvim-ts-context-commentstring", "p00f/nvim-ts-rainbow" },
+        after = { "nvim-ts-context-commentstring", "nvim-ts-rainbow" }
     },
     {
         -- illuminate same word under cursor
@@ -42,7 +42,7 @@ local install_plugins =
         "nvim-lualine/lualine.nvim",
         disable = false,
         load_file = true,
-        after = {"nvim-gps", "gitsigns.nvim", "nvim-web-devicons"}
+        after = { "nvim-gps", "gitsigns.nvim", "nvim-web-devicons" }
     },
     {
         -- optimize startup
@@ -57,30 +57,30 @@ local install_plugins =
     {
         -- Lua dep
         "nvim-lua/plenary.nvim",
-        event = {"BufRead", "BufNewFile"}
+        event = { "BufRead", "BufNewFile" }
     },
     {
         -- grep alternative
         "BurntSushi/ripgrep",
-        event = {"BufRead", "BufNewFile"}
+        event = { "BufRead", "BufNewFile" }
     },
     {
         -- find alternative
         "sharkdp/fd",
-        event = {"BufRead", "BufNewFile"}
+        event = { "BufRead", "BufNewFile" }
     },
     {
         -- LSP basic
         "neovim/nvim-lspconfig",
         load_file = true,
-        event = {"BufRead", "BufNewFile"}
+        event = { "BufRead", "BufNewFile" }
     },
     {
         -- view tree
         "stevearc/aerial.nvim",
         load_file = true,
         -- after = {"nvim-web-devicons"}
-        after = {"nvim-web-devicons", "nvim-lspconfig"}
+        after = { "nvim-web-devicons", "nvim-lspconfig" }
     },
     {
         "hrsh7th/nvim-cmp",
@@ -155,12 +155,12 @@ local install_plugins =
     {
         -- color parantheses
         "p00f/nvim-ts-rainbow",
-        event = {"BufRead", "BufNewFile"}
+        event = { "BufRead", "BufNewFile" }
     },
     {
         -- comment
         "JoosepAlviste/nvim-ts-context-commentstring",
-        event = {"BufRead", "BufNewFile"}
+        event = { "BufRead", "BufNewFile" }
     },
     {
         -- comment
@@ -184,13 +184,13 @@ local install_plugins =
         -- surround
         "ur4ltz/surround.nvim",
         load_file = true,
-        event = {"BufRead", "BufNewFile"}
+        event = { "BufRead", "BufNewFile" }
     },
     {
         -- built-in terminal
         "akinsho/toggleterm.nvim",
         load_file = true,
-        event = {"BufRead", "BufNewFile"}
+        event = { "BufRead", "BufNewFile" }
     },
     -- {
     --     -- multi-cursor
@@ -210,7 +210,7 @@ local install_plugins =
 }
 
 local packer =
-    require("packer").startup(
+require("packer").startup(
     {
         function(use)
             for _, plugin in ipairs(install_plugins) do
@@ -228,7 +228,12 @@ local packer =
                 use(plugin)
             end
             if packer_bootstrap then
-                require("packer").sync()
+                local ok, packer = pcall(require, "packer")
+                if ok then
+                    packer.sync()
+                else
+                    print("Warn: Tried to load packer, but file not found")
+                end
             end
         end,
         config = {

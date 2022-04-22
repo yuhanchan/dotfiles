@@ -1,8 +1,20 @@
 -- load files from basic folder
-require("basic.settings")
-require("basic.keybinds")
-require("basic.config")
-require("basic.plugins")
+local ok, _ = pcall(require, "basic.settings")
+if not ok then
+    print("Warn: tried to load basic.settings, but file not found")
+end
+local ok, _ = pcall(require, "basic.keybinds")
+if not ok then
+    print("Warn: tried to load basic.keybinds, but file not found")
+end
+local ok, _ = pcall(require, "basic.config")
+if not ok then
+    print("Warn: tried to load basic.config, but file not found")
+end
+local ok, _ = pcall(require, "basic.plugins")
+if not ok then
+    print("Warn: tried to load basic.plugins, but file not found")
+end
 
 local o = vim.o   -- global options
 local wo = vim.wo -- window-local options

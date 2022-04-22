@@ -32,4 +32,9 @@
 --     }
 -- )
 
-require("lspsaga").setup()
+local ok, lspsaga = pcall(require, "lspsaga")
+if not ok then
+    print("Warn: tried to load lspsaga, but file not found")
+else
+    lspsaga.setup()
+end

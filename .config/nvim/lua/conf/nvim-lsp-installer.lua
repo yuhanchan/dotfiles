@@ -1,6 +1,9 @@
 -- https://github.com/williamboman/nvim-lsp-installer
 
-local lsp_installer = require("nvim-lsp-installer")
+local ok, lsp_installer = pcall(require, "nvim-lsp-installer")
+if not ok then
+    print("Warn: tried to load nvim-lsp-installer, but file not found")
+end
 
 lsp_installer.settings({
     ui = {
@@ -46,10 +49,18 @@ lsp_installer.settings({
     max_concurrent_installers = 4,
 })
 
-local lsp_installer_servers = require("nvim-lsp-installer.servers")
+local ok, lsp_installer_servers = pcall(require, "nvim-lsp-installer.servers")
+if not ok then
+    print("Warn: tried to load nvim-lsp-installer.servers, but file not found")
+end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
+local ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
+if not ok then
+    print("Warn: tried to load cmp_nvim_lsp, but file not found")
+else
+    capabilities = cmp_nvim_lsp.update_capabilities(capabilities)
+end
 
 local servers = {
     "sumneko_lua",
@@ -61,7 +72,7 @@ local servers = {
 for _, server_name in pairs(servers) do
     local server_available, server = lsp_installer_servers.get_server(server_name)
     if server_available then
-        server:on_ready(function ()
+        server:on_ready(function()
             -- When this particular server is ready (i.e. when installation is finished or the server is already installed),
             -- this function will be invoked. Make sure not to also use the "catch-all" lsp_installer.on_server_ready()
             -- function to set up your servers, because by doing so you'd be setting up the same server twice.
