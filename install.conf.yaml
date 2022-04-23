@@ -1,0 +1,24 @@
+- defaults:
+    link:
+      create: true
+      relink: true
+
+- clean: ['~', '~/.config']
+
+- link:
+    ~/.commonrc:
+    ~/.bashrc:
+    ~/.zshrc:
+    ~/.gitconfig:
+    ~/.vimrc:
+    ~/.tmux:
+    ~/.tmux.conf:
+    ~/.oh-my-zsh/custom/plugins: zsh/plugins
+    ~/.config/lazygit: lazygit
+    ~/.config/nvim: nvim
+
+- create:
+
+- shell:
+  - git submodule sync --recursive
+  - git submodule update --init --recursive
