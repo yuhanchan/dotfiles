@@ -13,6 +13,7 @@ alias gc='git commit -m'
 alias gl='git log'
 alias ll='ls -lth'
 alias la='ls -alth'
+alias lg='lazygiT'
 
 # Misc
 alias df='df -h'
