@@ -10,7 +10,7 @@ source ~/.commonrc
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-  export ZSH="$HOME/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -19,8 +19,8 @@ source ~/.commonrc
 ZSH_THEME="robbyrussell"
 
 # make history size super large 
-export HISTFILESIZE=1000000000
-export HISTSIZE=1000000000
+export HISTFILESIZE=100000
+export HISTSIZE=100000
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
