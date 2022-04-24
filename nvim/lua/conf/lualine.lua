@@ -3,7 +3,7 @@
 
 local ok, gps = pcall(require, "nvim-gps")
 if not ok then
-    print("Warn: tried to load nvim-gps, but file not found")
+    print("Warn: tried to load nvim-gps, but failed")
 end
 
 local filetype_table = {
@@ -35,7 +35,7 @@ gps.setup()
 
 local ok, lualine = pcall(require, "lualine")
 if not ok then
-    print("Warn: tried to load lualine, but file not found")
+    print("Warn: tried to load lualine, but failed")
 else
     lualine.setup(
         {

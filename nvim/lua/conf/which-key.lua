@@ -2,7 +2,7 @@
 
 local ok, which_key = pcall(require, "which-key")
 if not ok then
-    print("Warn: tried to load which-key but failed")
+    print("Warn: tried to load which-key, but failed")
 else
     which_key.setup(
     {

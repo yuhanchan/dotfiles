@@ -34,7 +34,7 @@
 
 local ok, lspsaga = pcall(require, "lspsaga")
 if not ok then
-    print("Warn: tried to load lspsaga, but file not found")
+    print("Warn: tried to load lspsaga, but failed")
 else
     lspsaga.setup()
 end

@@ -3,7 +3,7 @@
 -- TODO: gitsigns 热键映射
 local ok, gitsigns = pcall(require, "gitsigns")
 if not ok then
-    print("Warn: tried to load gitsigns, but file not found")
+    print("Warn: tried to load gitsigns, but failed")
 else
     gitsigns.setup()
 end

@@ -3,7 +3,7 @@
 
 local ok, comment_string = pcall(require, "ts_context_commentstring")
 if not ok then
-    print("Warn: tried to load ts_context_commentstring, but file not found")
+    print("Warn: tried to load ts_context_commentstring, but failed")
 end
 -- local plugin_key = vim.u.keymap.set.comment.plugin_set
 
@@ -77,7 +77,7 @@ local default_opts =
         if vim.bo.filetype == "typescriptreact" then
             local ok, U = pcall(require, "Comment.utils")
             if not ok then
-                print("Warn: tried to load Comment.utils, but file not found")
+                print("Warn: tried to load Comment.utils, but failed")
             end
             -- Detemine whether to use linewise or blockwise commentstring
             local type = ctx.ctype == U.ctype.line and "__default" or "__multiline"
@@ -124,7 +124,7 @@ local my_opts = {
 
 local ok, Comment = pcall(require, "Comment")
 if not ok then
-    print("Warn: tried to load Comment, but file not found")
+    print("Warn: tried to load Comment, but failed")
 else
     Comment.setup(vim.tbl_deep_extend("force", default_opts, my_opts))
 end

@@ -2,7 +2,7 @@
 
 local ok, surround = pcall(require, "surround")
 if not ok then
-    print("Warn: tried to load surround, but file not found")
+    print("Warn: tried to load surround, but failed")
 else
     surround.setup(
         {

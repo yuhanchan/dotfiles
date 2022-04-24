@@ -1,6 +1,6 @@
 local ok, monokai = pcall(require, "monokai")
 if not ok then
-    print("Warn: tried to load monokai, but file not found")
+    print("Warn: tried to load monokai, but failed")
 else
     monokai.setup({
         palette = require('monokai').pro,

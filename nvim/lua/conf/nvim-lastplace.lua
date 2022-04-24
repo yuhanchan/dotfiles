@@ -2,7 +2,7 @@
 
 local ok, nvim_lastplace = pcall(require, "nvim-lastplace")
 if not ok then
-    print("Warn: tried to load nvim-lastplace, but file not found")
+    print("Warn: tried to load nvim-lastplace, but failed")
 else
     nvim_lastplace.setup(
         {

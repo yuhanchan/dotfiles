@@ -2,7 +2,7 @@
 
 local ok, hop = pcall(require, "hop")
 if not ok then
-    print("Warn: tried to load hop, but file not found")
+    print("Warn: tried to load hop, but failed")
 else
     hop.setup()
 end

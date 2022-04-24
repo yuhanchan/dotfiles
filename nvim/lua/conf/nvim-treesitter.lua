@@ -9,7 +9,7 @@
 
 local ok, nvim_treesitter_configs = pcall(require, "nvim-treesitter.configs")
 if not ok then
-    print("Warn: tried to load nvim-treesitter_configs, but file not found")
+    print("Warn: tried to load nvim-treesitter_configs, but failed")
 else
     nvim_treesitter_configs.setup({
         -- A list of parser names, or "all"

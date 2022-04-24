@@ -23,7 +23,7 @@
 
 local ok, aerial = pcall(require, "aerial")
 if not ok then
-    print("Warn: tried to load aerial, but file not found")
+    print("Warn: tried to load aerial, but failed")
 else
     aerial.setup()
 end

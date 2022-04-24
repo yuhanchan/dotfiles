@@ -2,7 +2,7 @@
 
 local ok, fidget = pcall(require, "fidget")
 if not ok then
-    print("Warn: tried to load fidget, but file not found")
+    print("Warn: tried to load fidget, but failed")
 else
     fidget.setup(
         {
