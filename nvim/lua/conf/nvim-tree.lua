@@ -1,11 +1,11 @@
 -- https://github.com/kyazdani42/nvim-tree.lua
 
-local ok, nvim_web_devicons = pcall(require, "nvim-web-devicons")
-if not ok then
-    print("Warn: tried to load nvim-web-devicons, but file not found")
-else
-    nvim_web_devicons.setup({ default = true })
-end
+-- local ok, nvim_web_devicons = pcall(require, "nvim-web-devicons")
+-- if not ok then
+    -- print("Warn: tried to load nvim-web-devicons, but file not found")
+-- else
+    -- nvim_web_devicons.setup({ default = true })
+-- end
 
 local ok, nvim_tree = pcall(require, "nvim-tree")
 if not ok then
