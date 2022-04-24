@@ -18,6 +18,7 @@
     ~/.tmux:
     ~/.tmux.conf:
     ~/.oh-my-zsh/custom/plugins: zsh/plugins
+        force: true
     ~/.config/lazygit: lazygit
     ~/.config/nvim: nvim
 
