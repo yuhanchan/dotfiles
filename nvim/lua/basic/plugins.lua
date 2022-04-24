@@ -99,6 +99,7 @@ local install_plugins =
     },
     {
         "hrsh7th/nvim-cmp",
+        load_file = true,
         after = "aerial.nvim"
     },
     {
@@ -148,10 +149,22 @@ local install_plugins =
         load_file = true,
         event = "InsertCharPre"
     },
+    -- {
+    --     vsnip engine, for snippets
+    --     "hrsh7th/vim-vsnip",
+    --     event = "InsertEnter"
+    -- },
     {
-        -- vsnip engine, for snippets
-        "hrsh7th/vim-vsnip",
-        event = "InsertEnter"
+        -- snippet engine
+        "L3MON4D3/LuaSnip",
+        load_file = false,
+        after = { "aerial.nvim", "nvim-cmp", "cmp-buffer", "cmp-path", "cmp-cmdline" }
+    },
+    {
+        -- friendly snippets
+        "rafamadriz/friendly-snippets",
+        load_file = false,
+        after = { "aerial.nvim", "nvim-cmp", "cmp-buffer", "cmp-path", "cmp-cmdline" , "LuaSnip" }
     },
     {
         -- provide context info for status bar
