@@ -5,3 +5,4 @@ packer_compiled.lua
 tmux/plugins/*
 !tmux/plugins/tpm
 vim/plugged
+lazygit/state.yml
