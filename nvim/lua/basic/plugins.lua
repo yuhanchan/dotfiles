@@ -1,6 +1,21 @@
 ---@diagnostic disable: undefined-global
 -- https://github.com/wbthomason/packer.nvim
 
+-- check if packer is installed, if not, install it
+local install_path = vim.fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
+if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
+    PACKER_BOOTSTRAP = vim.fn.system {
+        'git',
+        'clone',
+        '--depth',
+        '1',
+        'https://github.com/wbthomason/packer.nvim',
+        install_path,
+    }
+    print 'Installing packer.nvim, close and reopen nvim to complete installation'
+    vim.cmd [[packadd packer.nvim]]
+end
+
 local install_plugins =
 {
     {
@@ -251,12 +266,12 @@ require("packer").startup(
 )
 
 
--- 实时生效配置
+-- cmd to run PackerSync every time the file is save
 vim.cmd(
     [[
   augroup packer_user_config
     autocmd!
-    autocmd BufWritePost plugins.lua source <afile> | PackerCompile
+    autocmd BufWritePost plugins.lua source <afile> | PackerSync
   augroup end
 ]]
 )
