@@ -23,7 +23,7 @@
     ~/.config/lazygit: lazygit
     ~/.config/nvim: nvim
 
-- create:
+# - create:
 
 - shell:
   - git submodule sync --recursive
