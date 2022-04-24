@@ -69,6 +69,8 @@ vim.keybinds.gmap("n", "<C-l>", "gt", vim.keybinds.opts)
 -- move lines up and down
 vim.keybinds.gmap("n", "<A-j>", ":m .+1<CR>==", vim.keybinds.opts)
 vim.keybinds.gmap("n", "<A-k>", ":m .-2<CR>==", vim.keybinds.opts)
+vim.keybinds.gmap("v", "<A-j>", ":m '>+1<CR>gv=gv", vim.keybinds.opts)
+vim.keybinds.gmap("v", "<A-k>", ":m '<-2<CR>gv=gv", vim.keybinds.opts)
 
 -- Plugin hop
 vim.keybinds.gmap('n', 'f', "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = true })<cr>", {})
