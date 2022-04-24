@@ -2,3 +2,5 @@
 .dotfiles/tmp
 *.swp
 packer_compiled.lua
+tmux/plugins/*
+!tmux/plugins/tpm
