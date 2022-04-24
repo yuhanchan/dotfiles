@@ -33,10 +33,10 @@ vim.keybinds.gmap("n", "<", "v<gn", vim.keybinds.opts)
 vim.keybinds.gmap("v", "<", "<gv", vim.keybinds.opts)
 vim.keybinds.gmap("n", ">", "v>gn", vim.keybinds.opts)
 vim.keybinds.gmap("v", ">", ">gv", vim.keybinds.opts)
-vim.keybinds.gmap("n", "<S-Tab>", "v<gn", vim.keybinds.opts)
-vim.keybinds.gmap("v", "<S-Tab>", "<gv", vim.keybinds.opts)
-vim.keybinds.gmap("n", "<Tab>", "v>gn", vim.keybinds.opts)
-vim.keybinds.gmap("v", "<Tab>", ">gv", vim.keybinds.opts)
+-- vim.keybinds.gmap("n", "<S-Tab>", "v<gn", vim.keybinds.opts)
+-- vim.keybinds.gmap("v", "<S-Tab>", "<gv", vim.keybinds.opts)
+-- vim.keybinds.gmap("n", "<Tab>", "v>gn", vim.keybinds.opts)
+-- vim.keybinds.gmap("v", "<Tab>", ">gv", vim.keybinds.opts)
 
 -- all split commnd start with s
 vim.keybinds.gmap("n", "sv", ":vsp<CR>", vim.keybinds.opts) -- split vertically
