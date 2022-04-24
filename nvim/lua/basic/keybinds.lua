@@ -61,6 +61,11 @@ vim.keybinds.gmap("n", "<A-l>", "<C-w>l", vim.keybinds.opts)
 vim.keybinds.gmap("n", "<C-h>", "gT", vim.keybinds.opts)
 vim.keybinds.gmap("n", "<C-l>", "gt", vim.keybinds.opts)
 
+-- Plugin hop
+vim.keybinds.gmap('n', 'f', "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = true })<cr>", {})
+vim.keybinds.gmap('n', 'F', "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = true })<cr>", {})
+vim.keybinds.gmap('n', '<C-g>', ":HopPattern<CR>", {})
+
 -- alias commands easy to mistype
 cmd(':command! WQ wq')
 cmd(':command! WQ wq')
