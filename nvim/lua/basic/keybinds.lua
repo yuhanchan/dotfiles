@@ -9,6 +9,11 @@ vim.keybinds = {
 
 local cmd = vim.cmd
 
+-- remap leader to space
+vim.keybinds.gmap("", "<space>", "<Nop>", vim.keybinds.opts)
+vim.g.mapleader = " "
+vim.g.localleader = ","
+
 -- remap jk to Esc
 vim.keybinds.gmap("i", "jk", "<Esc>", vim.keybinds.opts)
 
@@ -60,6 +65,10 @@ vim.keybinds.gmap("n", "<A-l>", "<C-w>l", vim.keybinds.opts)
 -- navigate between tabs
 vim.keybinds.gmap("n", "<C-h>", "gT", vim.keybinds.opts)
 vim.keybinds.gmap("n", "<C-l>", "gt", vim.keybinds.opts)
+
+-- move lines up and down
+vim.keybinds.gmap("n", "<A-j>", ":m .+1<CR>==", vim.keybinds.opts)
+vim.keybinds.gmap("n", "<A-k>", ":m .-2<CR>==", vim.keybinds.opts)
 
 -- Plugin hop
 vim.keybinds.gmap('n', 'f', "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = true })<cr>", {})
