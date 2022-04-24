@@ -207,6 +207,12 @@ local install_plugins =
             "HopChar1"
         }
     },
+    {
+        -- which-key
+        "folke/which-key.nvim",
+        load_file = true,
+        event = {"BufRead", "BufNewFile"}
+    },
 }
 
 local packer =
