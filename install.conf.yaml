@@ -7,9 +7,13 @@
 
 - link:
     ~/.commonrc:
+        force: true
     ~/.bashrc:
+        force: true
     ~/.zshrc:
+        force: true
     ~/.gitconfig:
+        force: true
     ~/.vimrc:
     ~/.tmux:
     ~/.tmux.conf:
