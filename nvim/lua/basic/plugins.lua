@@ -243,40 +243,39 @@ local install_plugins =
     },
 }
 
-local packer =
-require("packer").startup(
-    {
-        function(use)
-            for _, plugin in ipairs(install_plugins) do
-                if plugin.load_file then
-                    local require_path
-                    if plugin.as then
-                        require_path = "conf/" .. plugin.as
-                    else
-                        -- require_path = "conf" .. string.match(plugin[1], "(/[%w-_]+).?")
-                        require_path = "conf/" .. string.match(plugin[1], "/([%w-_]+).?")
+local ok, packer = pcall(require, "packer")
+if not ok then
+    print("Warn: tried to load packer, but failed")
+else
+    packer.startup(
+        {
+            function(use)
+                for _, plugin in ipairs(install_plugins) do
+                    if plugin.load_file then
+                        local require_path
+                        if plugin.as then
+                            require_path = "conf/" .. plugin.as
+                        else
+                            -- require_path = "conf" .. string.match(plugin[1], "(/[%w-_]+).?")
+                            require_path = "conf/" .. string.match(plugin[1], "/([%w-_]+).?")
 
+                        end
+                        plugin.config = "require('" .. require_path .. "')"
                     end
-                    plugin.config = "require('" .. require_path .. "')"
+                    use(plugin)
                 end
-                use(plugin)
-            end
-            if packer_bootstrap then
-                local ok, packer = pcall(require, "packer")
-                if ok then
+                if packer_bootstrap then
                     packer.sync()
-                else
-                    print("Warn: Tried to load packer, but file not found")
                 end
-            end
-        end,
-        config = {
-            display = {
-                open_fn = require("packer.util").float
+            end,
+            config = {
+                display = {
+                    open_fn = require("packer.util").float
+                }
             }
         }
-    }
-)
+    )
+end
 
 
 -- cmd to run PackerSync every time the file is save
