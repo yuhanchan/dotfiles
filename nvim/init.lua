@@ -17,8 +17,6 @@ end
 local ok, _ = pcall(require, "basic.plugins")
 if not ok then
     print("Warn: tried to load basic.plugins, but failed")
-else
-    print("plugins loaded")
 end
 
 local ok, _ = pcall(require, "basic.options")
