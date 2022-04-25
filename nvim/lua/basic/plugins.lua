@@ -126,12 +126,6 @@ local install_plugins =
         after = "cmp-nvim-lsp"
     },
     -- {
-    --     -- LSP progress
-    --     "j-hui/fidget.nvim",
-    --     load_file = true,
-    --     after = "nvim-lsp-installer"
-    -- },
-    -- {
     --     -- LSP UI beautify
     --     "tami5/lspsaga.nvim",
     --     load_file = true,
@@ -149,11 +143,6 @@ local install_plugins =
         load_file = true,
         event = "InsertCharPre"
     },
-    -- {
-    --     vsnip engine, for snippets
-    --     "hrsh7th/vim-vsnip",
-    --     event = "InsertEnter"
-    -- },
     {
         -- snippet engine
         "L3MON4D3/LuaSnip",
@@ -220,11 +209,6 @@ local install_plugins =
         load_file = true,
         event = { "BufRead", "BufNewFile" }
     },
-    -- {
-    --     -- multi-cursor
-    --     "mg979/vim-visual-multi",
-    --     load_file = true
-    -- },
     {
         -- quick jump
         "phaazon/hop.nvim",
@@ -240,6 +224,10 @@ local install_plugins =
         "folke/which-key.nvim",
         load_file = true,
         event = {"BufRead", "BufNewFile"}
+    },
+    {
+        'nvim-telescope/telescope.nvim',
+        requires = { 'nvim-lua/plenary.nvim' }
     },
 }
 

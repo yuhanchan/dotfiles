@@ -77,6 +77,11 @@ vim.keybinds.gmap('n', 'f', "<cmd>lua require'hop'.hint_char1({ direction = requ
 vim.keybinds.gmap('n', 'F', "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = true })<cr>", {})
 vim.keybinds.gmap('n', '<C-g>', ":HopPattern<CR>", {})
 
+-- Plugin telescope
+vim.keybinds.gmap('n', '<leader>ff', "<cmd>Telescope find_files<cr>", vim.keybinds.opts)
+vim.keybinds.gmap('n', '<leader>g', "<cmd>Telescope live_grep<cr>", vim.keybinds.opts)
+
+
 -- alias commands easy to mistype
 cmd(':command! WQ wq')
 cmd(':command! WQ wq')
