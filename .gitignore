@@ -7,3 +7,4 @@ tmux/plugins/*
 vim/plugged
 lazygit/state.yml
 resurrect
+localrc
