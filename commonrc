@@ -2,7 +2,7 @@ export DOTFILE_PATH=$HOME/.dotfiles/
 
 source $DOTFILE_PATH/env
 source $DOTFILE_PATH/path
-test -f $DOTFILE_PATH/specific && source $DOTFILE_PATH/specific
+test -f $DOTFILE_PATH/localrc && source $DOTFILE_PATH/localrc
 source $DOTFILE_PATH/alias
 source $DOTFILE_PATH/function
 source $DOTFILE_PATH/misc
