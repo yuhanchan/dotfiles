@@ -37,6 +37,6 @@ if [ -x "$(command -v bat)" ]; then
 fi
 
 if [ -x "$(command -v ncdu)" ]; then
-	alias du='ncdu'
+	alias du='ncdu --color dark'
 fi
 
