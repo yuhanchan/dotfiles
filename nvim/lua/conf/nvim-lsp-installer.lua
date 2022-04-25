@@ -2,8 +2,16 @@
 
 local ok, lsp_installer = pcall(require, "nvim-lsp-installer")
 if not ok then
-    print("Warn: tried to load nvim-lsp-installer, but file not found")
+    print("Warn: tried to load nvim-lsp-installer, but failed")
 end
+
+-- local ok, handlers = pcall(require, "handlers")
+-- if not ok then
+    -- print("Warn: tried to load handlers, but failed")
+    -- return
+-- else
+    -- handlers.setup()
+-- end
 
 lsp_installer.settings({
     ui = {
@@ -51,32 +59,71 @@ lsp_installer.settings({
 
 local ok, lsp_installer_servers = pcall(require, "nvim-lsp-installer.servers")
 if not ok then
-    print("Warn: tried to load nvim-lsp-installer.servers, but file not found")
+    print("Warn: tried to load nvim-lsp-installer.servers, but failed")
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 local ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
 if not ok then
-    print("Warn: tried to load cmp_nvim_lsp, but file not found")
+    print("Warn: tried to load cmp_nvim_lsp, but failed")
 else
     capabilities = cmp_nvim_lsp.update_capabilities(capabilities)
 end
 
 local servers = {
-    "sumneko_lua",
-    "jedi_language_server",
-    "html",
-    "jsonls",
+    'sumneko_lua',
+    'pyright',
+    'html',
+    'jsonls',
+    'awk_ls',
+    'bashls',
+    'ccls',
+    'cmake',
+    'gopls',
+    'julials',
+    'zeta_note',
+    'yamlls',
 }
 
 for _, server_name in pairs(servers) do
     local server_available, server = lsp_installer_servers.get_server(server_name)
     if server_available then
+        -- -- Register a handler that will be called for all installed servers.
+        -- -- Alternatively, you may also register handlers on specific server instances instead (see example below).
+        -- lsp_installer.on_server_ready(function(server)
+        --     local opts = {
+        --         on_attach = handlers.on_attach,
+        --         capabilities = handlers.capabilities,
+        --     }
+
+
+        --     -- This setup() function is exactly the same as lspconfig's setup function.
+        --     -- Refer to https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
+        --     server:setup(opts)
+        -- end)
+
         server:on_ready(function()
             -- When this particular server is ready (i.e. when installation is finished or the server is already installed),
             -- this function will be invoked. Make sure not to also use the "catch-all" lsp_installer.on_server_ready()
             -- function to set up your servers, because by doing so you'd be setting up the same server twice.
-            local opts = {}
+            local opts = {
+                -- on_attach = handlers.on_attach,
+                -- capabilities = handlers.capabilities,
+            }
+            if server_name == "jsonls" then
+                local jsonls_opts = require("lsp.settings.jsonls")
+                opts = vim.tbl_deep_extend("force", jsonls_opts, opts)
+            end
+
+            if server_name == "sumneko_lua" then
+                local sumneko_opts = require("lsp.settings.sumneko_lua")
+                opts = vim.tbl_deep_extend("force", sumneko_opts, opts)
+            end
+
+            if server_name == "pyright" then
+                local pyright_opts = require("lsp.settings.pyright")
+                opts = vim.tbl_deep_extend("force", pyright_opts, opts)
+            end
             server:setup(opts)
         end)
         if not server:is_installed() then
@@ -86,3 +133,5 @@ for _, server_name in pairs(servers) do
         end
     end
 end
+
+

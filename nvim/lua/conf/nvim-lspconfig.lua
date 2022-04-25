@@ -3,18 +3,65 @@
 -- 诊断样式定制
 -- require'lspconfig'.pyright.setup{}
 
-vim.diagnostic.config(
-  {
-    virtual_text = {
-      prefix = "●",
-      source = "always"
-    },
-    float = {
-      source = "always"
-    },
-    update_in_insert = false
+local M = {}
+
+-- TODO: backfill this to template
+M.setup = function()
+  local signs = {
+    { name = "DiagnosticSignError", text = "" },
+    { name = "DiagnosticSignWarn", text = "" },
+    { name = "DiagnosticSignHint", text = "" },
+    { name = "DiagnosticSignInfo", text = "" },
   }
-)
+
+  for _, sign in ipairs(signs) do
+    vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
+  end
+
+  local config = {
+    -- disable virtual text
+    virtual_text = false,
+    -- show signs
+    signs = {
+      active = signs,
+    },
+    underline = true,
+    severity_sort = true,
+    float = {
+      focusable = false,
+      style = "minimal",
+      border = "rounded",
+      source = "always",
+      header = "",
+      prefix = "",
+    },
+    update_in_insert = false,
+  }
+
+  vim.diagnostic.config(config)
+
+  vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+    border = "rounded",
+  })
+
+  vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
+    border = "rounded",
+  })
+end
+M.setup()
+
+-- vim.diagnostic.config(
+--   {
+--     virtual_text = {
+--       prefix = "●",
+--       source = "always"
+--     },
+--     float = {
+--       source = "always"
+--     },
+--     update_in_insert = false
+--   }
+-- )
 
 -- Mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
@@ -49,7 +96,20 @@ end
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
-local servers = { 'pyright', 'rust_analyzer', 'tsserver' }
+local servers = {
+    'sumneko_lua',
+    'pyright',
+    'html',
+    'jsonls',
+    'awk_ls',
+    'bashls',
+    'ccls',
+    'cmake',
+    'gopls',
+    'julials',
+    'zeta_note',
+    'yamlls',
+}
 for _, lsp in pairs(servers) do
   require('lspconfig')[lsp].setup {
     on_attach = on_attach,
