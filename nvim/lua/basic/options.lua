@@ -41,5 +41,7 @@ o.hlsearch = false
 -- wo.wrap = false
 
 -- buffer-local options
--- bo.expandtab = true
-
+bo.tabstop = 4
+bo.shiftwidth = 4
+bo.softtabstop = 4
+bo.expandtab = true
