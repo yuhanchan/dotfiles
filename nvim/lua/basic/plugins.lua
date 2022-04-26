@@ -60,6 +60,10 @@ local install_plugins =
         after = { "nvim-gps", "gitsigns.nvim", "nvim-web-devicons" }
     },
     {
+        "yuhanchan/nvim-tabline",
+        load_file = true,
+    },
+    {
         -- optimize startup
         "lewis6991/impatient.nvim",
         load_file = true
