@@ -12,7 +12,9 @@ local cmd = vim.cmd
 -- remap leader to space
 vim.keybinds.gmap("", "<space>", "<Nop>", vim.keybinds.opts)
 vim.g.mapleader = " "
-vim.g.localleader = ","
+vim.g.localleader = " "
+
+vim.g.dashboard_default_executable = "telescope"
 
 -- remap jk to Esc
 vim.keybinds.gmap("i", "jk", "<Esc>", vim.keybinds.opts)
@@ -79,8 +81,11 @@ vim.keybinds.gmap('n', '<C-g>', ":HopPattern<CR>", {})
 
 -- Plugin telescope
 vim.keybinds.gmap('n', '<leader>ff', "<cmd>Telescope find_files<cr>", vim.keybinds.opts)
+vim.keybinds.gmap('n', '<leader>fm', "<cmd>Telescope vim_bookmarks<cr>", vim.keybinds.opts)
 vim.keybinds.gmap('n', '<leader>g', "<cmd>Telescope live_grep<cr>", vim.keybinds.opts)
 
+vim.keybinds.gmap('n', '<leader>ss', "<C-u>SessionSave<cr>", vim.keybinds.opts)
+vim.keybinds.gmap('n', '<leader>sl', "<C-u>SessionLoad<cr>", vim.keybinds.opts)
 
 -- alias commands easy to mistype
 cmd(':command! WQ wq')
