@@ -230,8 +230,28 @@ local install_plugins =
         event = {"BufRead", "BufNewFile"}
     },
     {
+        -- vim_bookmarks
+        "MattesGroeger/vim-bookmarks",
+        load_file = false,
+    },
+    {
+        -- telescope vim bookmarks extension
+        "tom-anders/telescope-vim-bookmarks.nvim",
+    },
+    {
         'nvim-telescope/telescope.nvim',
         requires = { 'nvim-lua/plenary.nvim' }
+    },
+    {
+        -- todo comments
+        "folke/todo-comments.nvim",
+        load_file = true,
+        requires = { 'nvim-lua/plenary.nvim' },
+    },
+    {
+        -- autosession
+        "rmagatti/auto-session",
+        load_file = true,
     },
 }
 
