@@ -217,11 +217,11 @@ local install_plugins =
         -- quick jump
         "phaazon/hop.nvim",
         load_file = true,
-        cmd = {
-            "HopWord",
-            "HopLine",
-            "HopChar1"
-        }
+        -- cmd = {
+            -- "HopWord",
+            -- "HopLine",
+            -- "HopChar1"
+        -- }
     },
     {
         -- which-key
