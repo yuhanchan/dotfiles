@@ -240,8 +240,12 @@ local install_plugins =
     },
     {
         'nvim-telescope/telescope.nvim',
+        load_file = true,
         requires = { 'nvim-lua/plenary.nvim' }
     },
+    -- {
+        -- "ellisonleao/glow.nvim",
+    -- },
     {
         -- todo comments
         "folke/todo-comments.nvim",
@@ -253,6 +257,17 @@ local install_plugins =
         "rmagatti/auto-session",
         load_file = true,
     },
+    -- {
+    --     -- startup
+    --     "startup-nvim/startup.nvim",
+    --     requires = {"nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim"},
+    --     load_file = true,
+    -- },
+    -- {
+    --     -- dashboard
+    --     "glepnir/dashboard-nvim",
+    --     load_file = false,
+    -- },
 }
 
 local ok, packer = pcall(require, "packer")
