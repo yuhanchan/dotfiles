@@ -88,9 +88,8 @@ vim.keybinds.gmap('n', '<leader>ss', "<C-u>SessionSave<cr>", vim.keybinds.opts)
 vim.keybinds.gmap('n', '<leader>sl', "<C-u>SessionLoad<cr>", vim.keybinds.opts)
 
 -- alias commands easy to mistype
-cmd(':command! WQ wq')
-cmd(':command! WQ wq')
-cmd(':command! Wq wq')
+cmd(':command! WQ wqa')
+cmd(':command! Wq wqa')
 cmd(':command! Wqa wqa')
-cmd(':command! W w')
-cmd(':command! Q q')
+cmd(':command! W wa')
+cmd(':command! Q qa')
