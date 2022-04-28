@@ -34,7 +34,7 @@ o.foldlevel = 100           -- set max fold level
 o.splitbelow = true         -- splitbelow
 o.splitright = true         -- splitright
 o.hlsearch = false
-
+o.foldexpr = "nvim_treesitter#foldexpr()"
 -- window-local options
 -- wo.number = false
 -- wo.colorcolumn = '80'       -- highlight column 80
