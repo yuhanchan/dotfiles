@@ -36,9 +36,9 @@ vim.keybinds.gmap("n", "<F3>", ":set hlsearch!<CR>", vim.keybinds.opts)
 vim.keybinds.gmap("n", "<leader>cs", "<cmd>set spell!<CR>", vim.keybinds.opts)
 
 -- code indent and de-indent
-vim.keybinds.gmap("n", "<", "v<gn", vim.keybinds.opts)
+vim.keybinds.gmap("n", "<", "v<<Esc>", vim.keybinds.opts)
 vim.keybinds.gmap("v", "<", "<gv", vim.keybinds.opts)
-vim.keybinds.gmap("n", ">", "v>gn", vim.keybinds.opts)
+vim.keybinds.gmap("n", ">", "v><Esc>", vim.keybinds.opts)
 vim.keybinds.gmap("v", ">", ">gv", vim.keybinds.opts)
 -- vim.keybinds.gmap("n", "<S-Tab>", "v<gn", vim.keybinds.opts)
 -- vim.keybinds.gmap("v", "<S-Tab>", "<gv", vim.keybinds.opts)
@@ -63,6 +63,10 @@ vim.keybinds.gmap("n", "<A-h>", "<C-w>h", vim.keybinds.opts)
 vim.keybinds.gmap("n", "<A-j>", "<C-w>j", vim.keybinds.opts)
 vim.keybinds.gmap("n", "<A-k>", "<C-w>k", vim.keybinds.opts)
 vim.keybinds.gmap("n", "<A-l>", "<C-w>l", vim.keybinds.opts)
+vim.keybinds.gmap("n", "<leader>h", "<C-w>h", vim.keybinds.opts)
+vim.keybinds.gmap("n", "<leader>j", "<C-w>j", vim.keybinds.opts)
+vim.keybinds.gmap("n", "<leader>k", "<C-w>k", vim.keybinds.opts)
+vim.keybinds.gmap("n", "<leader>l", "<C-w>l", vim.keybinds.opts)
 
 -- navigate between tabs
 vim.keybinds.gmap("n", "<C-h>", "gT", vim.keybinds.opts)
@@ -77,7 +81,7 @@ vim.keybinds.gmap("v", "<A-k>", ":m '<-2<CR>gv=gv", vim.keybinds.opts)
 -- Plugin hop
 vim.keybinds.gmap('n', 'f', "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = true })<cr>", {})
 vim.keybinds.gmap('n', 'F', "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = true })<cr>", {})
-vim.keybinds.gmap('n', '<C-g>', ":HopPattern<CR>", {})
+vim.keybinds.gmap('n', '<leader>;', ":HopPattern<CR>", {})
 
 -- Plugin telescope
 vim.keybinds.gmap('n', '<leader>ff', "<cmd>Telescope find_files<cr>", vim.keybinds.opts)
@@ -86,6 +90,15 @@ vim.keybinds.gmap('n', '<leader>g', "<cmd>Telescope live_grep<cr>", vim.keybinds
 
 vim.keybinds.gmap('n', '<leader>ss', "<C-u>SessionSave<cr>", vim.keybinds.opts)
 vim.keybinds.gmap('n', '<leader>sl', "<C-u>SessionLoad<cr>", vim.keybinds.opts)
+
+-- Plugin Packer
+vim.keybinds.gmap('n', '<leader>pp', "<cmd>PackerSync<cr>", vim.keybinds.opts)
+vim.keybinds.gmap('n', '<leader>ps', "<cmd>PackerStatus<cr>", vim.keybinds.opts)
+vim.keybinds.gmap('n', '<leader>pc', "<cmd>PackerClean<cr>", vim.keybinds.opts)
+
+-- save and quit
+vim.keybinds.gmap('n', '<leader>q', "<cmd>q<cr>", vim.keybinds.opts)
+vim.keybinds.gmap('n', '<leader>w', "<cmd>w<cr>", vim.keybinds.opts)
 
 -- alias commands easy to mistype
 cmd(':command! WQ wqa')
