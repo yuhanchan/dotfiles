@@ -16,6 +16,8 @@ if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
     vim.cmd [[packadd packer.nvim]]
 end
 
+-- use {'wbthomason/packer.nvim', opt=false}
+
 local install_plugins =
 {
     {
@@ -38,7 +40,7 @@ local install_plugins =
         "nvim-treesitter/nvim-treesitter",
         run = ":TSupdate",
         load_file = true,
-        event = { "BufRead", "BufNewFile" },
+        -- -- event = { "BufRead", "BufNewFile" },
         requires = { "JoosepAlviste/nvim-ts-context-commentstring", "p00f/nvim-ts-rainbow" },
         after = { "nvim-ts-context-commentstring", "nvim-ts-rainbow" }
     },
@@ -76,23 +78,23 @@ local install_plugins =
     {
         -- Lua dep
         "nvim-lua/plenary.nvim",
-        event = { "BufRead", "BufNewFile" }
+        -- event = { "BufRead", "BufNewFile" }
     },
     {
         -- grep alternative
         "BurntSushi/ripgrep",
-        event = { "BufRead", "BufNewFile" }
+        -- event = { "BufRead", "BufNewFile" }
     },
     {
         -- find alternative
         "sharkdp/fd",
-        event = { "BufRead", "BufNewFile" }
+        -- event = { "BufRead", "BufNewFile" }
     },
     {
         -- LSP basic
         "neovim/nvim-lspconfig",
         load_file = true,
-        event = { "BufRead", "BufNewFile" }
+        -- event = { "BufRead", "BufNewFile" }
     },
     {
         -- view tree
@@ -145,7 +147,7 @@ local install_plugins =
         -- git copilot
         "github/copilot.vim",
         load_file = true,
-        event = "InsertCharPre"
+        -- -- event = "InsertCharPre"
     },
     {
         -- snippet engine
@@ -158,7 +160,7 @@ local install_plugins =
         "rafamadriz/friendly-snippets",
         load_file = false,
         after = { "aerial.nvim", "nvim-cmp", "cmp-buffer", "cmp-path", "cmp-cmdline" , "LuaSnip" }
-    },
+     },
     {
         -- provide context info for status bar
         "SmiteshP/nvim-gps",
@@ -176,12 +178,12 @@ local install_plugins =
     {
         -- color parantheses
         "p00f/nvim-ts-rainbow",
-        event = { "BufRead", "BufNewFile" }
+        -- event = { "BufRead", "BufNewFile" }
     },
     {
         -- comment
         "JoosepAlviste/nvim-ts-context-commentstring",
-        event = { "BufRead", "BufNewFile" }
+        -- event = { "BufRead", "BufNewFile" }
     },
     {
         -- comment
@@ -193,25 +195,25 @@ local install_plugins =
         -- code formatter
         "sbdchd/neoformat",
         load_file = true,
-        cmd = "Neoformat"
+        -- cmd = "Neoformat"
     },
     {
         -- autopair parantheses
         "windwp/nvim-autopairs",
         load_file = true,
-        event = "InsertEnter"
+        -- event = "InsertEnter"
     },
     {
         -- surround
         "ur4ltz/surround.nvim",
         load_file = true,
-        event = { "BufRead", "BufNewFile" }
+        -- event = { "BufRead", "BufNewFile" }
     },
     {
         -- built-in terminal
         "akinsho/toggleterm.nvim",
         load_file = true,
-        event = { "BufRead", "BufNewFile" }
+        -- event = { "BufRead", "BufNewFile" }
     },
     {
         -- quick jump
@@ -227,7 +229,7 @@ local install_plugins =
         -- which-key
         "folke/which-key.nvim",
         load_file = true,
-        event = {"BufRead", "BufNewFile"}
+        -- event = {"BufRead", "BufNewFile"}
     },
     {
         -- vim_bookmarks
