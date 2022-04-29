@@ -17,7 +17,7 @@ else
                 width = 30,
                 height = 30,
                 hide_root_folder = false,
-                auto_resize = true
+                -- auto_resize = true
             },
             diagnostics = {
                 enable = true,
