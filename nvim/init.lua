@@ -24,3 +24,5 @@ if not ok then
     print("Warn: tried to load basic.options, but failed")
 end
 
+vim.cmd "colorscheme sonokai"
+

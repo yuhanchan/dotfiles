@@ -30,10 +30,15 @@ local install_plugins =
         requires = { "kyazdani42/nvim-web-devicons" },
         load_file = true
     },
-    {
+    -- {
         -- monokai theme
-        "tanvirtin/monokai.nvim",
-        load_file = true
+        -- "tanvirtin/monokai.nvim",
+        -- load_file = true
+    -- },
+    {
+        -- sonokai theme
+        "sainnhe/sonokai",
+        load_file = false
     },
     {
         -- syntax highlight
