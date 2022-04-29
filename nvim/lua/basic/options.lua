@@ -40,6 +40,11 @@ o.foldexpr = "nvim_treesitter#foldexpr()"
 -- wo.colorcolumn = '80'       -- highlight column 80
 -- wo.wrap = false
 
+o.tabstop = 4
+o.shiftwidth = 4
+o.softtabstop = 4
+o.expandtab = true
+
 -- buffer-local options
 bo.tabstop = 4
 bo.shiftwidth = 4
