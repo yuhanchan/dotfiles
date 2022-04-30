@@ -10,6 +10,19 @@ end
 
 require("luasnip/loaders/from_vscode").load({ paths = { "~/.local/share/nvim/site/pack/packer/opt/friendly-snippets" } })
 
+luasnip.config.set_config({
+    history = true,
+    updateevents = "TextChanged, TextChangedI",
+    enable_autosnippets = true,
+    ext_opts = {
+        [require("luasnip.util.types").choiceNode] = {
+            active = {
+                virt_text = { { "", "GruvboxOrange" } },
+            },
+        },
+    },
+})
+
 local check_backspace = function()
   local col = vim.fn.col "." - 1
   return col == 0 or vim.fn.getline("."):sub(col, col):match "%s"
@@ -101,7 +114,9 @@ cmp.setup {
       vim_item.kind = string.format("%s", kind_icons[vim_item.kind])
       -- vim_item.kind = string.format('%s %s', kind_icons[vim_item.kind], vim_item.kind) -- This concatonates the icons with the name of the item kind
       vim_item.menu = ({
+        copilot = "[Copilot]",
         luasnip = "[Snippet]",
+        nvim_lsp = "[LSP]",
         buffer = "[Buffer]",
         path = "[Path]",
       })[entry.source.name]
@@ -110,7 +125,10 @@ cmp.setup {
   },
   sources = {
     { name = "luasnip" },
-    { name = "buffer" },
+    { name = "copilot" },
+    { name = "nvim_lsp", max_items_count = 6 },
+    { name = "nvim_lua"},
+    { name = "buffer" , max_items_count = 6 },
     { name = "path" },
   },
   confirm_opts = {

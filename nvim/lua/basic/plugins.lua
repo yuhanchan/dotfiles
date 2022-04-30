@@ -161,6 +161,11 @@ local install_plugins =
         after = { "aerial.nvim", "nvim-cmp", "cmp-buffer", "cmp-path", "cmp-cmdline" }
     },
     {
+        -- cmp_luasnip
+        "saadparwaiz1/cmp_luasnip",
+        load_file = false,
+    },
+    {
         -- friendly snippets
         "rafamadriz/friendly-snippets",
         load_file = false,
