@@ -8,3 +8,4 @@ vim/plugged
 lazygit/state.yml
 resurrect
 localrc
+nvim/extensions
