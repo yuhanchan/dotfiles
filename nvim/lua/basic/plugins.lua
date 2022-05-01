@@ -280,6 +280,25 @@ local install_plugins =
     --     "glepnir/dashboard-nvim",
     --     load_file = false,
     -- },
+    {
+        "anuvyklack/pretty-fold.nvim",
+        load_file = true,
+    },
+    {
+        -- dap
+        "mfussenegger/nvim-dap",
+        load_file = true,
+    },
+    {
+        "theHamsta/nvim-dap-virtual-text",
+        load_file = true,
+        requires = { "mfussenegger/nvim-dap" }
+    },
+    {
+        "rcarriga/nvim-dap-ui",
+        load_file = true,
+        requires = { "mfussenegger/nvim-dap" }
+    }
 }
 
 local ok, packer = pcall(require, "packer")
