@@ -303,8 +303,12 @@ local install_plugins =
     {
         "monkoose/matchparen.nvim",
         load_file = true,
-    }
-
+    },
+    {
+        "sindrets/diffview.nvim",
+        requires = { "nvim-lua/plenary.nvim" },
+        load_file = true,
+    },
 }
 
 local ok, packer = pcall(require, "packer")
