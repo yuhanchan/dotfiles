@@ -24,7 +24,4 @@ if not ok then
     print("Warn: tried to load basic.options, but failed")
 end
 
-vim.cmd "colorscheme sonokai"
-
-vim.cmd "hi illuminatedWord cterm=underline gui=underline guibg=#737373"
 
