@@ -45,7 +45,8 @@ local install_plugins =
         "nvim-treesitter/nvim-treesitter",
         run = ":TSupdate",
         load_file = true,
-        -- -- event = { "BufRead", "BufNewFile" },
+        commit = "a33a188ce7abffa0efac8184b24bbf9b7e4b34bb",
+        event = { "BufRead", "BufNewFile" },
         requires = { "JoosepAlviste/nvim-ts-context-commentstring", "p00f/nvim-ts-rainbow" },
         after = { "nvim-ts-context-commentstring", "nvim-ts-rainbow" }
     },
@@ -298,7 +299,12 @@ local install_plugins =
         "rcarriga/nvim-dap-ui",
         load_file = true,
         requires = { "mfussenegger/nvim-dap" }
+    },
+    {
+        "monkoose/matchparen.nvim",
+        load_file = true,
     }
+
 }
 
 local ok, packer = pcall(require, "packer")
