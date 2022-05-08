@@ -86,10 +86,15 @@ vim.keybinds.gmap('n', '<leader>;', ":HopPattern<CR>", {})
 -- Plugin telescope
 vim.keybinds.gmap('n', '<leader>ff', "<cmd>Telescope find_files<cr>", vim.keybinds.opts)
 vim.keybinds.gmap('n', '<leader>fm', "<cmd>Telescope vim_bookmarks<cr>", vim.keybinds.opts)
-vim.keybinds.gmap('n', '<leader>g', "<cmd>Telescope live_grep<cr>", vim.keybinds.opts)
+vim.keybinds.gmap('n', '<leader>l', "<cmd>Telescope live_grep<cr>", vim.keybinds.opts)
 
 vim.keybinds.gmap('n', '<leader>ss', "<C-u>SessionSave<cr>", vim.keybinds.opts)
 vim.keybinds.gmap('n', '<leader>sl', "<C-u>SessionLoad<cr>", vim.keybinds.opts)
+
+-- Plugin diffview
+vim.keybinds.gmap('n', '<leader>go', "<cmd>DiffviewOpen<cr>", vim.keybinds.opts)
+vim.keybinds.gmap('n', '<leader>gc', "<cmd>DiffviewClose<cr>", vim.keybinds.opts)
+vim.keybinds.gmap('n', '<leader>gh', "<cmd>DiffviewFileHistory<cr>", vim.keybinds.opts)
 
 -- Plugin Packer
 vim.keybinds.gmap('n', '<leader>pp', "<cmd>PackerSync<cr>", vim.keybinds.opts)
