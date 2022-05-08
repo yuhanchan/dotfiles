@@ -52,4 +52,6 @@ bo.softtabstop = 4
 bo.expandtab = true
 
 -- other options
-vim.cmd("hi hi MatchParen cterm=none guibg=orange guifg=orange")
+o.background = "dark"
+o.t_Co = "256"
+
