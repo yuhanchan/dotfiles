@@ -81,12 +81,12 @@ vim.keybinds.gmap("v", "<A-k>", ":m '<-2<CR>gv=gv", vim.keybinds.opts)
 -- Plugin hop
 vim.keybinds.gmap('n', 'f', "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = true })<cr>", {})
 vim.keybinds.gmap('n', 'F', "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = true })<cr>", {})
-vim.keybinds.gmap('n', '<leader>;', ":HopPattern<CR>", {})
+vim.keybinds.gmap('n', '<leader><space>', ":HopPattern<CR>", {})
 
 -- Plugin telescope
 vim.keybinds.gmap('n', '<leader>ff', "<cmd>Telescope find_files<cr>", vim.keybinds.opts)
 vim.keybinds.gmap('n', '<leader>fm', "<cmd>Telescope vim_bookmarks<cr>", vim.keybinds.opts)
-vim.keybinds.gmap('n', '<leader>l', "<cmd>Telescope live_grep<cr>", vim.keybinds.opts)
+vim.keybinds.gmap('n', '<leader>;', "<cmd>Telescope live_grep<cr>", vim.keybinds.opts)
 
 vim.keybinds.gmap('n', '<leader>ss', "<C-u>SessionSave<cr>", vim.keybinds.opts)
 vim.keybinds.gmap('n', '<leader>sl', "<C-u>SessionLoad<cr>", vim.keybinds.opts)
