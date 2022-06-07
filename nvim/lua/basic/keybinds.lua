@@ -24,10 +24,10 @@ vim.keybinds.gmap("n", "<C-u>", "10k", vim.keybinds.opts)
 vim.keybinds.gmap("n", "<C-d>", "10j", vim.keybinds.opts)
 
 -- adjust split size. Ctrl + Arrows
-vim.keybinds.gmap("n", "<C-up>", "<cmd>res +1<CR>", vim.keybinds.opts)
-vim.keybinds.gmap("n", "<C-down>", "<cmd>res -1<CR>", vim.keybinds.opts)
-vim.keybinds.gmap("n", "<C-left>", "<cmd>vertical resize-1<CR>", vim.keybinds.opts)
-vim.keybinds.gmap("n", "<C-right>", "<cmd>vertical resize+1<CR>", vim.keybinds.opts)
+vim.keybinds.gmap("n", "<C-up>", "<cmd>res +4<CR>", vim.keybinds.opts)
+vim.keybinds.gmap("n", "<C-down>", "<cmd>res -4<CR>", vim.keybinds.opts)
+vim.keybinds.gmap("n", "<C-left>", "<cmd>vertical resize-4<CR>", vim.keybinds.opts)
+vim.keybinds.gmap("n", "<C-right>", "<cmd>vertical resize+4<CR>", vim.keybinds.opts)
 
 -- toggle highlight search
 vim.keybinds.gmap("n", "<F3>", ":set hlsearch!<CR>", vim.keybinds.opts)
@@ -59,18 +59,18 @@ vim.keybinds.gmap("n", "sj", ":resize +10<CR>", vim.keybinds.opts) -- adjust spl
 vim.keybinds.gmap("n", "sk", ":resize -10<CR>", vim.keybinds.opts) -- adjust split size up
 
 -- navigate between windows
-vim.keybinds.gmap("n", "<A-h>", "<C-w>h", vim.keybinds.opts)
-vim.keybinds.gmap("n", "<A-j>", "<C-w>j", vim.keybinds.opts)
-vim.keybinds.gmap("n", "<A-k>", "<C-w>k", vim.keybinds.opts)
-vim.keybinds.gmap("n", "<A-l>", "<C-w>l", vim.keybinds.opts)
-vim.keybinds.gmap("n", "<leader>h", "<C-w>h", vim.keybinds.opts)
-vim.keybinds.gmap("n", "<leader>j", "<C-w>j", vim.keybinds.opts)
-vim.keybinds.gmap("n", "<leader>k", "<C-w>k", vim.keybinds.opts)
-vim.keybinds.gmap("n", "<leader>l", "<C-w>l", vim.keybinds.opts)
+-- vim.keybinds.gmap("n", "<A-h>", "<C-w>h", vim.keybinds.opts)
+-- vim.keybinds.gmap("n", "<A-j>", "<C-w>j", vim.keybinds.opts)
+-- vim.keybinds.gmap("n", "<A-k>", "<C-w>k", vim.keybinds.opts)
+-- vim.keybinds.gmap("n", "<A-l>", "<C-w>l", vim.keybinds.opts)
+vim.keybinds.gmap("n", "<C-h>", "<C-w>h", vim.keybinds.opts)
+vim.keybinds.gmap("n", "<C-j>", "<C-w>j", vim.keybinds.opts)
+vim.keybinds.gmap("n", "<C-k>", "<C-w>k", vim.keybinds.opts)
+vim.keybinds.gmap("n", "<C-l>", "<C-w>l", vim.keybinds.opts)
 
 -- navigate between tabs
-vim.keybinds.gmap("n", "<C-h>", "gT", vim.keybinds.opts)
-vim.keybinds.gmap("n", "<C-l>", "gt", vim.keybinds.opts)
+vim.keybinds.gmap("n", "T", "gT", vim.keybinds.opts)
+vim.keybinds.gmap("n", "t", "gt", vim.keybinds.opts)
 
 -- move lines up and down
 vim.keybinds.gmap("n", "<A-j>", ":m .+1<CR>==", vim.keybinds.opts)
