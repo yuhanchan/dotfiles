@@ -31,9 +31,9 @@ local install_plugins =
         load_file = true
     },
     -- {
-        -- monokai theme
-        -- "tanvirtin/monokai.nvim",
-        -- load_file = true
+    -- monokai theme
+    -- "tanvirtin/monokai.nvim",
+    -- load_file = true
     -- },
     {
         -- sonokai theme
@@ -170,8 +170,8 @@ local install_plugins =
         -- friendly snippets
         "rafamadriz/friendly-snippets",
         load_file = false,
-        after = { "aerial.nvim", "nvim-cmp", "cmp-buffer", "cmp-path", "cmp-cmdline" , "LuaSnip" }
-     },
+        after = { "aerial.nvim", "nvim-cmp", "cmp-buffer", "cmp-path", "cmp-cmdline", "LuaSnip" }
+    },
     {
         -- provide context info for status bar
         "SmiteshP/nvim-gps",
@@ -231,9 +231,9 @@ local install_plugins =
         "phaazon/hop.nvim",
         load_file = true,
         -- cmd = {
-            -- "HopWord",
-            -- "HopLine",
-            -- "HopChar1"
+        -- "HopWord",
+        -- "HopLine",
+        -- "HopChar1"
         -- }
     },
     {
@@ -257,7 +257,7 @@ local install_plugins =
         requires = { 'nvim-lua/plenary.nvim' }
     },
     -- {
-        -- "ellisonleao/glow.nvim",
+    -- "ellisonleao/glow.nvim",
     -- },
     {
         -- todo comments
@@ -309,6 +309,14 @@ local install_plugins =
         requires = { "nvim-lua/plenary.nvim" },
         load_file = true,
     },
+    {
+        "jose-elias-alvarez/null-ls.nvim",
+        load_file = true,
+    },
+    -- {
+    -- "lukas-reineke/lsp-format.nvim",
+    -- load_file = true,
+    -- },
 }
 
 local ok, packer = pcall(require, "packer")
@@ -317,38 +325,38 @@ if not ok then
 else
     packer.startup(
         {
-            function(use)
-                for _, plugin in ipairs(install_plugins) do
-                    if plugin.load_file then
-                        local require_path
-                        if plugin.as then
-                            require_path = "conf/" .. plugin.as
-                        else
-                            -- require_path = "conf" .. string.match(plugin[1], "(/[%w-_]+).?")
-                            require_path = "conf/" .. string.match(plugin[1], "/([%w-_]+).?")
+        function(use)
+            for _, plugin in ipairs(install_plugins) do
+                if plugin.load_file then
+                    local require_path
+                    if plugin.as then
+                        require_path = "conf/" .. plugin.as
+                    else
+                        -- require_path = "conf" .. string.match(plugin[1], "(/[%w-_]+).?")
+                        require_path = "conf/" .. string.match(plugin[1], "/([%w-_]+).?")
 
-                        end
-                        plugin.config = "require('" .. require_path .. "')"
                     end
-                    use(plugin)
+                    plugin.config = "require('" .. require_path .. "')"
                 end
-                if packer_bootstrap then
-                    packer.sync()
-                end
-            end,
-            config = {
-                display = {
-                    open_fn = require("packer.util").float
-                }
+                use(plugin)
+            end
+            if packer_bootstrap then
+                packer.sync()
+            end
+        end,
+        config = {
+            display = {
+                open_fn = require("packer.util").float
             }
         }
+    }
     )
 end
 
 
 -- cmd to run PackerSync every time the file is save
 vim.cmd(
-    [[
+[[
   augroup packer_user_config
     autocmd!
     autocmd BufWritePost plugins.lua source <afile> | PackerSync
