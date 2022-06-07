@@ -60,22 +60,23 @@ if not ok then
     print("Warn: tried to load cmp_nvim_lsp, but failed")
 else
     capabilities = cmp_nvim_lsp.update_capabilities(capabilities)
+    -- capabilities.offsetEncoding = "utf-8"
 end
 
 local function lsp_highlight_document(client)
-  -- Set autocommands conditional on server_capabilities
-  if client.resolved_capabilities.document_highlight then
-    vim.api.nvim_exec(
-      [[
+    -- Set autocommands conditional on server_capabilities
+    if client.resolved_capabilities.document_highlight then
+        vim.api.nvim_exec(
+            [[
       augroup lsp_document_highlight
         autocmd! * <buffer>
         autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
         autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
       augroup END
-    ]],
-      false
-    )
-  end
+    ]]       ,
+            false
+        )
+    end
 end
 
 -- local function lsp_keymaps(bufnr)
@@ -109,8 +110,10 @@ if not ok then
 end
 
 local on_attach = function(client, bufnr)
-  lsp_keymaps_.lsp_keymaps(bufnr)
-  lsp_highlight_document(client)
+    lsp_keymaps_.lsp_keymaps(bufnr)
+    -- lsp_highlight_document(client)
+    -- require "lsp-format".on_attach(client)
+    -- client.offset_encoding = "utf-8"
 end
 
 local servers = {
@@ -126,6 +129,7 @@ local servers = {
     'julials',
     'zeta_note',
     'yamlls',
+    -- 'efm',
 }
 
 for _, server_name in pairs(servers) do
@@ -162,5 +166,3 @@ for _, server_name in pairs(servers) do
         end
     end
 end
-
-
