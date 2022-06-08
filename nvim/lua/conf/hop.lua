@@ -16,4 +16,4 @@
 --         vim.cmd("hi HopNextKey2 ctermfg=15")
 --     })
 -- end
-require'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
+require 'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }

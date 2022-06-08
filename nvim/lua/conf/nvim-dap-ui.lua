@@ -36,4 +36,3 @@ else
         vim.keybinds.gmap("n", "<leader>du", "<cmd>lua require'dapui'.toggle()<CR>", vim.keybinds.opts)
     end
 end
-
