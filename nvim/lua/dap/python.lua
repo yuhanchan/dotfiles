@@ -4,7 +4,7 @@ return {
     adapters = {
         type = "executable",
         command = "python3",
-        args = {"-m", "debugpy.adapter"}
+        args = { "-m", "debugpy.adapter" }
     },
     configurations = {
         {
