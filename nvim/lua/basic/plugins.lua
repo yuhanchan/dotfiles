@@ -17,6 +17,7 @@ if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
 end
 
 
+-- WARN: be careful with "after", "event", "cmd", as these args will put plugins in /opt folder
 local install_plugins =
 {
     {
@@ -45,9 +46,9 @@ local install_plugins =
         run = ":TSupdate",
         load_file = true,
         commit = "a33a188ce7abffa0efac8184b24bbf9b7e4b34bb",
-        event = { "BufRead", "BufNewFile" },
+        -- event = { "BufRead", "BufNewFile" },
         requires = { "JoosepAlviste/nvim-ts-context-commentstring", "p00f/nvim-ts-rainbow" },
-        after = { "nvim-ts-context-commentstring", "nvim-ts-rainbow" }
+        -- after = { "nvim-ts-context-commentstring", "nvim-ts-rainbow" }
     },
     {
         -- illuminate same word under cursor
@@ -64,7 +65,7 @@ local install_plugins =
         "nvim-lualine/lualine.nvim",
         disable = false,
         load_file = true,
-        after = { "nvim-gps", "gitsigns.nvim", "nvim-web-devicons" }
+        -- after = { "nvim-gps", "gitsigns.nvim", "nvim-web-devicons" }
     },
     {
         "yuhanchan/nvim-tabline",
@@ -78,7 +79,7 @@ local install_plugins =
     {
         -- icon patch
         "kyazdani42/nvim-web-devicons",
-        after = "impatient.nvim"
+        -- after = "impatient.nvim"
     },
     {
         -- Lua dep
@@ -99,7 +100,7 @@ local install_plugins =
         -- LSP basic
         "neovim/nvim-lspconfig",
         load_file = false,
-        after = {"nvim-lsp-installer"},
+        -- after = {"nvim-lsp-installer"},
         -- event = { "BufRead", "BufNewFile" }
     },
     {
@@ -107,36 +108,36 @@ local install_plugins =
         "stevearc/aerial.nvim",
         load_file = true,
         -- after = {"nvim-web-devicons"}
-        after = { "nvim-web-devicons", "nvim-lspconfig" }
+        -- after = { "nvim-web-devicons", "nvim-lspconfig" }
     },
     {
         "hrsh7th/nvim-cmp",
         load_file = true,
-        after = "aerial.nvim"
+        -- after = "aerial.nvim"
     },
     {
         "hrsh7th/cmp-buffer",
-        after = "aerial.nvim"
+        -- after = "aerial.nvim"
     },
     {
         "hrsh7th/cmp-path",
-        after = "aerial.nvim"
+        -- after = "aerial.nvim"
     },
     {
         "hrsh7th/cmp-cmdline",
-        after = "aerial.nvim"
+        -- after = "aerial.nvim"
     },
     {
         -- replace built-in omnifunc auto-complete
         "hrsh7th/cmp-nvim-lsp",
         load_file = false,
-        after = { "aerial.nvim", "nvim-cmp", "cmp-buffer", "cmp-path", "cmp-cmdline" }
+        -- after = { "aerial.nvim", "nvim-cmp", "cmp-buffer", "cmp-path", "cmp-cmdline" }
     },
     {
         -- LSP installer
         "williamboman/nvim-lsp-installer",
         load_file = false,
-        after = "cmp-nvim-lsp"
+        -- after = "cmp-nvim-lsp"
     },
     -- {
     --     -- LSP UI beautify
@@ -160,7 +161,7 @@ local install_plugins =
         -- snippet engine
         "L3MON4D3/LuaSnip",
         load_file = false,
-        after = { "aerial.nvim", "nvim-cmp", "cmp-buffer", "cmp-path", "cmp-cmdline" }
+        -- after = { "aerial.nvim", "nvim-cmp", "cmp-buffer", "cmp-path", "cmp-cmdline" }
     },
     {
         -- cmp_luasnip
@@ -171,21 +172,21 @@ local install_plugins =
         -- friendly snippets
         "rafamadriz/friendly-snippets",
         load_file = false,
-        after = { "aerial.nvim", "nvim-cmp", "cmp-buffer", "cmp-path", "cmp-cmdline", "LuaSnip" }
+        -- after = { "aerial.nvim", "nvim-cmp", "cmp-buffer", "cmp-path", "cmp-cmdline", "LuaSnip" }
     },
     {
         -- provide context info for status bar
         "SmiteshP/nvim-gps",
-        after = "nvim-treesitter"
+        -- after = "nvim-treesitter"
     },
     {
         -- git signs
         "lewis6991/gitsigns.nvim",
         load_file = true,
-        after = {
-            "nvim-treesitter",
-            "plenary.nvim"
-        }
+        -- after = {
+            -- "nvim-treesitter",
+            -- "plenary.nvim"
+        -- }
     },
     {
         -- color parantheses
@@ -201,7 +202,7 @@ local install_plugins =
         -- comment
         "numToStr/Comment.nvim",
         load_file = true,
-        after = "nvim-ts-context-commentstring"
+        -- after = "nvim-ts-context-commentstring"
     },
     {
         -- code formatter
