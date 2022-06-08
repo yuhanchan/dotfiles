@@ -17,7 +17,7 @@ else
             -- null_ls.builtins.diagnostics.jsonlint,
 
             -- for formatting
-            null_ls.builtins.formatting.stylua, -- lua
+            -- null_ls.builtins.formatting.stylua, -- lua
             null_ls.builtins.formatting.black, -- python
             null_ls.builtins.formatting.clang_format, -- c, cpp, cuda
             -- null_ls.builtins.formatting.cmake_format, -- cmake

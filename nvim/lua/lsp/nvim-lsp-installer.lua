@@ -110,7 +110,7 @@ if not ok then
 end
 
 local on_attach = function(client, bufnr)
-    lsp_keymaps_.lsp_keymaps(bufnr)
+    lsp_keymaps_.lsp_on_attach(client, bufnr)
     -- lsp_highlight_document(client)
     -- require "lsp-format".on_attach(client)
     -- client.offset_encoding = "utf-8"
