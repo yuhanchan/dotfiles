@@ -1,8 +1,9 @@
 -- https://github.com/williamboman/nvim-lsp-installer
-
 local ok, lsp_installer = pcall(require, "nvim-lsp-installer")
 if not ok then
     print("Warn: tried to load nvim-lsp-installer, but failed")
+    -- vim.notify("nvim-lspconfig not found!")
+    return
 end
 
 lsp_installer.settings({
@@ -54,30 +55,30 @@ if not ok then
     print("Warn: tried to load nvim-lsp-installer.servers, but failed")
 end
 
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-local ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
-if not ok then
-    print("Warn: tried to load cmp_nvim_lsp, but failed")
-else
-    capabilities = cmp_nvim_lsp.update_capabilities(capabilities)
-    -- capabilities.offsetEncoding = "utf-8"
-end
+-- local capabilities = vim.lsp.protocol.make_client_capabilities()
+-- local ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
+-- if not ok then
+--     print("Warn: tried to load cmp_nvim_lsp, but failed")
+-- else
+--     capabilities = cmp_nvim_lsp.update_capabilities(capabilities)
+--     -- capabilities.offsetEncoding = "utf-8"
+-- end
 
-local function lsp_highlight_document(client)
-    -- Set autocommands conditional on server_capabilities
-    if client.resolved_capabilities.document_highlight then
-        vim.api.nvim_exec(
-            [[
-      augroup lsp_document_highlight
-        autocmd! * <buffer>
-        autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
-        autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
-      augroup END
-    ]]       ,
-            false
-        )
-    end
-end
+-- local function lsp_highlight_document(client)
+--     -- Set autocommands conditional on server_capabilities
+--     if client.resolved_capabilities.document_highlight then
+--         vim.api.nvim_exec(
+--             [[
+--       augroup lsp_document_highlight
+--         autocmd! * <buffer>
+--         autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
+--         autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
+--       augroup END
+--     ]]       ,
+--             false
+--         )
+--     end
+-- end
 
 -- local function lsp_keymaps(bufnr)
 --   local opts = { noremap = true, silent = true }
@@ -103,18 +104,18 @@ end
 --   vim.cmd [[ command! Format execute 'lua vim.lsp.buf.formatting()' ]]
 -- end
 
-local ok, lsp_keymaps_ = pcall(require, "conf.lsp_keymaps")
-if not ok then
-    print("Warn: tried to load lsp_keymaps, but failed")
-    return
-end
+-- local ok, lsp_keymaps_ = pcall(require, "conf.lsp_keymaps")
+-- if not ok then
+--     print("Warn: tried to load lsp_keymaps, but failed")
+--     return
+-- end
 
-local on_attach = function(client, bufnr)
-    lsp_keymaps_.lsp_on_attach(client, bufnr)
-    -- lsp_highlight_document(client)
-    -- require "lsp-format".on_attach(client)
-    -- client.offset_encoding = "utf-8"
-end
+-- local on_attach = function(client, bufnr)
+--     lsp_keymaps_.lsp_on_attach(client, bufnr)
+--     -- lsp_highlight_document(client)
+--     -- require "lsp-format".on_attach(client)
+--     -- client.offset_encoding = "utf-8"
+-- end
 
 local servers = {
     'sumneko_lua',
@@ -140,8 +141,11 @@ for _, server_name in pairs(servers) do
             -- this function will be invoked. Make sure not to also use the "catch-all" lsp_installer.on_server_ready()
             -- function to set up your servers, because by doing so you'd be setting up the same server twice.
             local opts = {
-                on_attach = on_attach,
-                capabilities = capabilities,
+                on_attach = require("lsp.handlers").on_attach,
+                capabilities = require("lsp.handlers").capabilities,
+                flags = {
+                  debounce_text_changes = 150,
+                }
             }
             if server_name == "jsonls" then
                 local jsonls_opts = require("lsp.settings.jsonls")
@@ -157,6 +161,51 @@ for _, server_name in pairs(servers) do
                 local pyright_opts = require("lsp.settings.pyright")
                 opts = vim.tbl_deep_extend("force", pyright_opts, opts)
             end
+
+            -- if server_name == "html" then
+            --     local html_opts = require("lsp.settings.html")
+            --     opts = vim.tbl_deep_extend("force", html_opts, opts)
+            -- end
+
+            -- if server_name == "awk_ls" then
+            --     local awk_ls_opts = require("lsp.settings.awk_ls")
+            --     opts = vim.tbl_deep_extend("force", awk_ls_opts, opts)
+            -- end
+
+            -- if server_name == "bashls" then
+            --     local bashls_opts = require("lsp.settings.bashls")
+            --     opts = vim.tbl_deep_extend("force", bashls_opts, opts)
+            -- end
+
+            -- if server_name == "ccls" then
+            --     local ccls_opts = require("lsp.settings.ccls")
+            --     opts = vim.tbl_deep_extend("force", ccls_opts, opts)
+            -- end
+
+            -- if server_name == "cmake" then
+            --     local cmake_opts = require("lsp.settings.cmake")
+            --     opts = vim.tbl_deep_extend("force", cmake_opts, opts)
+            -- end
+
+            -- if server_name == "gopls" then
+            --     local gopls_opts = require("lsp.settings.gopls")
+            --     opts = vim.tbl_deep_extend("force", gopls_opts, opts)
+            -- end
+
+            -- if server_name == "julials" then
+            --     local julials_opts = require("lsp.settings.julials")
+            --     opts = vim.tbl_deep_extend("force", julials_opts, opts)
+            -- end
+
+            -- if server_name == "zeta_note" then
+            --     local zeta_note_opts = require("lsp.settings.zeta_note")
+            --     opts = vim.tbl_deep_extend("force", zeta_note_opts, opts)
+            -- end
+
+            -- if server_name == "yamlls" then
+            --     local yamlls_opts = require("lsp.settings.yamlls")
+            --     opts = vim.tbl_deep_extend("force", yamlls_opts, opts)
+            -- end
             server:setup(opts)
         end)
         if not server:is_installed() then
