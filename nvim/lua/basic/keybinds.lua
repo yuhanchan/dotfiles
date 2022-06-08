@@ -88,8 +88,8 @@ vim.keybinds.gmap('n', '<leader>ff', "<cmd>Telescope find_files<cr>", vim.keybin
 vim.keybinds.gmap('n', '<leader>fm', "<cmd>Telescope vim_bookmarks<cr>", vim.keybinds.opts)
 vim.keybinds.gmap('n', '<leader>;', "<cmd>Telescope live_grep<cr>", vim.keybinds.opts)
 
-vim.keybinds.gmap('n', '<leader>ss', "<C-u>SessionSave<cr>", vim.keybinds.opts)
-vim.keybinds.gmap('n', '<leader>sl', "<C-u>SessionLoad<cr>", vim.keybinds.opts)
+-- vim.keybinds.gmap('n', '<leader>ss', "<C-u>SessionSave<cr>", vim.keybinds.opts)
+-- vim.keybinds.gmap('n', '<leader>sl', "<C-u>SessionLoad<cr>", vim.keybinds.opts)
 
 -- Plugin diffview
 vim.keybinds.gmap('n', '<leader>go', "<cmd>DiffviewOpen<cr>", vim.keybinds.opts)
@@ -102,8 +102,8 @@ vim.keybinds.gmap('n', '<leader>ps', "<cmd>PackerStatus<cr>", vim.keybinds.opts)
 vim.keybinds.gmap('n', '<leader>pc', "<cmd>PackerClean<cr>", vim.keybinds.opts)
 
 -- save and quit
-vim.keybinds.gmap('n', '<leader>q', "<cmd>q<cr>", vim.keybinds.opts)
-vim.keybinds.gmap('n', '<leader>w', "<cmd>w<cr>", vim.keybinds.opts)
+-- vim.keybinds.gmap('n', '<leader>q', "<cmd>q<cr>", vim.keybinds.opts)
+-- vim.keybinds.gmap('n', '<leader>w', "<cmd>w<cr>", vim.keybinds.opts)
 
 -- alias commands easy to mistype
 cmd(':command! WQ wqa')

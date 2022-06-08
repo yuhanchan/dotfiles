@@ -16,7 +16,6 @@ if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
     vim.cmd [[packadd packer.nvim]]
 end
 
--- use {'wbthomason/packer.nvim', opt=false}
 
 local install_plugins =
 {
@@ -99,7 +98,8 @@ local install_plugins =
     {
         -- LSP basic
         "neovim/nvim-lspconfig",
-        load_file = true,
+        load_file = false,
+        after = {"nvim-lsp-installer"},
         -- event = { "BufRead", "BufNewFile" }
     },
     {
@@ -129,12 +129,13 @@ local install_plugins =
     {
         -- replace built-in omnifunc auto-complete
         "hrsh7th/cmp-nvim-lsp",
+        load_file = false,
         after = { "aerial.nvim", "nvim-cmp", "cmp-buffer", "cmp-path", "cmp-cmdline" }
     },
     {
         -- LSP installer
         "williamboman/nvim-lsp-installer",
-        load_file = true,
+        load_file = false,
         after = "cmp-nvim-lsp"
     },
     -- {
@@ -311,18 +312,20 @@ local install_plugins =
     },
     {
         "jose-elias-alvarez/null-ls.nvim",
-        load_file = true,
+        load_file = false,
     },
-    -- {
-    -- "lukas-reineke/lsp-format.nvim",
-    -- load_file = true,
-    -- },
 }
 
 local ok, packer = pcall(require, "packer")
 if not ok then
     print("Warn: tried to load packer, but failed")
 else
+    packer.init(
+        {
+            opt_default = false, -- Default to using opt (as opposed to start) plugins
+        }
+    )
+
     packer.startup(
         {
         function(use)
