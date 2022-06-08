@@ -30,11 +30,6 @@ local install_plugins =
         requires = { "kyazdani42/nvim-web-devicons" },
         load_file = true
     },
-    -- {
-    -- monokai theme
-    -- "tanvirtin/monokai.nvim",
-    -- load_file = true
-    -- },
     {
         -- sonokai theme
         "sainnhe/sonokai",
@@ -46,8 +41,8 @@ local install_plugins =
         run = ":TSupdate",
         load_file = true,
         commit = "a33a188ce7abffa0efac8184b24bbf9b7e4b34bb",
-        -- event = { "BufRead", "BufNewFile" },
         requires = { "JoosepAlviste/nvim-ts-context-commentstring", "p00f/nvim-ts-rainbow" },
+        -- event = { "BufRead", "BufNewFile" },
         -- after = { "nvim-ts-context-commentstring", "nvim-ts-rainbow" }
     },
     {
@@ -139,18 +134,6 @@ local install_plugins =
         load_file = false,
         -- after = "cmp-nvim-lsp"
     },
-    -- {
-    --     -- LSP UI beautify
-    --     "tami5/lspsaga.nvim",
-    --     load_file = true,
-    --     after = "nvim-lsp-installer"
-    -- },
-    -- {
-    --     -- LSP diagnose
-    --     "mfussenegger/nvim-lint",
-    --     load_file = false,
-    --     after = "nvim-lsp-installer"
-    -- },
     {
         -- git copilot
         "github/copilot.vim",
@@ -183,10 +166,7 @@ local install_plugins =
         -- git signs
         "lewis6991/gitsigns.nvim",
         load_file = true,
-        -- after = {
-            -- "nvim-treesitter",
-            -- "plenary.nvim"
-        -- }
+        -- after = { "nvim-treesitter", "plenary.nvim" }
     },
     {
         -- color parantheses
@@ -194,18 +174,15 @@ local install_plugins =
         -- event = { "BufRead", "BufNewFile" }
     },
     {
-        -- comment
         "JoosepAlviste/nvim-ts-context-commentstring",
         -- event = { "BufRead", "BufNewFile" }
     },
     {
-        -- comment
         "numToStr/Comment.nvim",
         load_file = true,
         -- after = "nvim-ts-context-commentstring"
     },
     {
-        -- code formatter
         "sbdchd/neoformat",
         load_file = true,
         -- cmd = "Neoformat"
@@ -217,7 +194,6 @@ local install_plugins =
         -- event = "InsertEnter"
     },
     {
-        -- surround
         "ur4ltz/surround.nvim",
         load_file = true,
         -- event = { "BufRead", "BufNewFile" }
@@ -232,11 +208,6 @@ local install_plugins =
         -- quick jump
         "phaazon/hop.nvim",
         load_file = true,
-        -- cmd = {
-        -- "HopWord",
-        -- "HopLine",
-        -- "HopChar1"
-        -- }
     },
     {
         -- which-key
@@ -245,50 +216,32 @@ local install_plugins =
         -- event = {"BufRead", "BufNewFile"}
     },
     {
-        -- vim_bookmarks
         "MattesGroeger/vim-bookmarks",
         load_file = false,
     },
     {
-        -- telescope vim bookmarks extension
         "tom-anders/telescope-vim-bookmarks.nvim",
+        load_file = false,
     },
     {
         'nvim-telescope/telescope.nvim',
         load_file = true,
         requires = { 'nvim-lua/plenary.nvim' }
     },
-    -- {
-    -- "ellisonleao/glow.nvim",
-    -- },
     {
-        -- todo comments
         "folke/todo-comments.nvim",
         load_file = true,
         requires = { 'nvim-lua/plenary.nvim' },
     },
     {
-        -- autosession
         "rmagatti/auto-session",
         load_file = true,
     },
-    -- {
-    --     -- startup
-    --     "startup-nvim/startup.nvim",
-    --     requires = {"nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim"},
-    --     load_file = true,
-    -- },
-    -- {
-    --     -- dashboard
-    --     "glepnir/dashboard-nvim",
-    --     load_file = false,
-    -- },
     {
         "anuvyklack/pretty-fold.nvim",
         load_file = true,
     },
     {
-        -- dap
         "mfussenegger/nvim-dap",
         load_file = true,
     },
@@ -329,38 +282,38 @@ else
 
     packer.startup(
         {
-        function(use)
-            for _, plugin in ipairs(install_plugins) do
-                if plugin.load_file then
-                    local require_path
-                    if plugin.as then
-                        require_path = "conf/" .. plugin.as
-                    else
-                        -- require_path = "conf" .. string.match(plugin[1], "(/[%w-_]+).?")
-                        require_path = "conf/" .. string.match(plugin[1], "/([%w-_]+).?")
+            function(use)
+                for _, plugin in ipairs(install_plugins) do
+                    if plugin.load_file then
+                        local require_path
+                        if plugin.as then
+                            require_path = "conf/" .. plugin.as
+                        else
+                            -- require_path = "conf" .. string.match(plugin[1], "(/[%w-_]+).?")
+                            require_path = "conf/" .. string.match(plugin[1], "/([%w-_]+).?")
 
+                        end
+                        plugin.config = "require('" .. require_path .. "')"
                     end
-                    plugin.config = "require('" .. require_path .. "')"
+                    use(plugin)
                 end
-                use(plugin)
-            end
-            if packer_bootstrap then
-                packer.sync()
-            end
-        end,
-        config = {
-            display = {
-                open_fn = require("packer.util").float
+                if packer_bootstrap then
+                    packer.sync()
+                end
+            end,
+            config = {
+                display = {
+                    open_fn = require("packer.util").float
+                }
             }
         }
-    }
     )
 end
 
 
 -- cmd to run PackerSync every time the file is save
 vim.cmd(
-[[
+    [[
   augroup packer_user_config
     autocmd!
     autocmd BufWritePost plugins.lua source <afile> | PackerSync
