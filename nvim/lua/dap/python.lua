@@ -1,12 +1,14 @@
 -- python3 -m pip install debugpy
-
-return {
-    adapters = {
+local ok, dap = pcall(require, 'dap')
+if not ok then
+    print('Warn: tried to load dap, but failed')
+else
+    dap.adapters.python = {
         type = "executable",
         command = "python3",
         args = { "-m", "debugpy.adapter" }
-    },
-    configurations = {
+    }
+    dap.configurations.python = {
         {
             type = "python",
             request = "launch",
@@ -17,4 +19,4 @@ return {
             end
         }
     }
-}
+end
