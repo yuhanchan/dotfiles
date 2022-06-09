@@ -104,6 +104,7 @@ M.on_attach = function(client, bufnr)
     end
     if client.name == "ccls" then
         client.resolved_capabilities.document_formatting = false
+        client.offset_encoding = "utf-16"
     end
     if client.name == "pyright" then
         client.resolved_capabilities.document_formatting = false
@@ -120,5 +121,5 @@ if not status_ok then
 end
 
 M.capabilities = cmp_nvim_lsp.update_capabilities(capabilities)
-
+-- M.capabilities.offset_encoding = "utf-16"
 return M
