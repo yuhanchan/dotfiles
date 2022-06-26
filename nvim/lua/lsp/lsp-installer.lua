@@ -61,15 +61,16 @@ end
 local servers = {
     'sumneko_lua',
     'pyright',
-    'html',
+    -- 'html',
     'jsonls',
     'awk_ls',
     'bashls',
     'ccls',
+    'clangd',
     'cmake',
-    'gopls',
+    -- 'gopls',
     'julials',
-    'zeta_note',
+    -- 'zeta_note',
     'yamlls',
     -- 'efm',
 }
@@ -161,7 +162,7 @@ for _, server_name in pairs(servers) do
             end
 
             -- server:setup(opts) -- this is deprecated
-            require("lspconfig")[server_name].setup{opts}
+            require("lspconfig")[server_name].setup(opts)
         end)
         if not server:is_installed() then
             -- Queue the server to be installed.

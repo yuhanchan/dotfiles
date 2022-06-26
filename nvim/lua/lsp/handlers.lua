@@ -73,11 +73,12 @@ local function lsp_keymaps(bufnr)
     vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
     -- vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>f", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
     vim.api.nvim_buf_set_keymap(bufnr, "n", "[d", '<cmd>lua vim.diagnostic.goto_prev({ border = "rounded" })<CR>', opts)
-    vim.api.nvim_buf_set_keymap(bufnr, "n", "gl", '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics({ border = "rounded" })<CR>', opts)
+    vim.api.nvim_buf_set_keymap(bufnr, "n", "gl",
+        '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics({ border = "rounded" })<CR>', opts)
     vim.api.nvim_buf_set_keymap(bufnr, "n", "]d", '<cmd>lua vim.diagnostic.goto_next({ border = "rounded" })<CR>', opts)
     vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>q", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts)
 
-    vim.api.nvim_set_keymap('n', '<space>e', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
+    vim.api.nvim_set_keymap('n', '<leader>e', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
     vim.cmd [[ command! Format execute 'lua vim.lsp.buf.formatting()' ]]
 end
 
@@ -103,6 +104,10 @@ M.on_attach = function(client, bufnr)
         client.resolved_capabilities.document_formatting = false
     end
     if client.name == "ccls" then
+        client.resolved_capabilities.document_formatting = false
+        client.offset_encoding = "utf-16"
+    end
+    if client.name == "clangd" then
         client.resolved_capabilities.document_formatting = false
         client.offset_encoding = "utf-16"
     end
