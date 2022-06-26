@@ -270,6 +270,14 @@ local install_plugins =
         "jose-elias-alvarez/null-ls.nvim",
         load_file = false,
     },
+    {
+        "lukas-reineke/indent-blankline.nvim",
+        load_file = true,
+    },
+    {
+        "rcarriga/nvim-notify",
+        load_file = true,
+    },
 }
 
 local ok, packer = pcall(require, "packer")
