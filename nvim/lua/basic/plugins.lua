@@ -95,6 +95,7 @@ local install_plugins =
         -- LSP basic
         "neovim/nvim-lspconfig",
         load_file = false,
+        commit = "eb039998b1bcdafbd5d3b8ff917c871f5010c1e4",
         -- after = {"nvim-lsp-installer"},
         -- event = { "BufRead", "BufNewFile" }
     },
@@ -132,6 +133,7 @@ local install_plugins =
         -- LSP installer
         "williamboman/nvim-lsp-installer",
         load_file = false,
+        commit = "338063ab0d678103f09a0ce86ce9b292a12ca17f",
         -- after = "cmp-nvim-lsp"
     },
     {
