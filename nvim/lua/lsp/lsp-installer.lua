@@ -50,6 +50,9 @@ lsp_installer.settings({
     max_concurrent_installers = 4,
 })
 
+lsp_installer.setup({})
+
+
 local ok, lsp_installer_servers = pcall(require, "nvim-lsp-installer.servers")
 if not ok then
     print("Warn: tried to load nvim-lsp-installer.servers, but failed")
@@ -70,6 +73,8 @@ local servers = {
     'yamlls',
     -- 'efm',
 }
+
+local notify_ok, notify = pcall(require, "notify")
 
 for _, server_name in pairs(servers) do
     local server_available, server = lsp_installer_servers.get_server(server_name)
@@ -144,11 +149,31 @@ for _, server_name in pairs(servers) do
             --     local yamlls_opts = require("lsp.settings.yamlls")
             --     opts = vim.tbl_deep_extend("force", yamlls_opts, opts)
             -- end
-            server:setup(opts)
+
+            if notify_ok then
+                notify(server_name .. " started", "info", {
+                    title = "LSP Installer",
+                    timeout = 2000,
+                    render = "default",
+                })
+            else
+                print("Installed " .. server_name)
+            end
+
+            -- server:setup(opts) -- this is deprecated
+            require("lspconfig")[server_name].setup{opts}
         end)
         if not server:is_installed() then
             -- Queue the server to be installed.
-            print("Installing " .. server_name)
+            if notify_ok then
+                notify("Installing " .. server_name, "warn", {
+                    title = "LSP Installer",
+                    timeout = 2000,
+                    render = "default",
+                })
+            else
+                print("Installing " .. server_name)
+            end
             server:install()
         end
     end
