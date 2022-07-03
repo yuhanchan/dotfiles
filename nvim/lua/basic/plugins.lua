@@ -139,8 +139,17 @@ local install_plugins =
     {
         -- git copilot
         "github/copilot.vim",
-        load_file = true,
+        load_file = false,
+        disable = true,
         -- -- event = "InsertCharPre"
+    },
+    {
+        "zbirenbaum/copilot.lua",
+        load_file = true,
+    },
+    {
+        "zbirenbaum/copilot-cmp",
+        module = "copilot_cmp",
     },
     {
         -- snippet engine
@@ -321,12 +330,12 @@ else
 end
 
 
--- cmd to run PackerSync every time the file is save
-vim.cmd(
-    [[
-  augroup packer_user_config
-    autocmd!
-    autocmd BufWritePost plugins.lua source <afile> | PackerSync
-  augroup end
-]]
-)
+-- -- cmd to run PackerSync every time the file is save
+-- vim.cmd(
+--     [[
+--   augroup packer_user_config
+--     autocmd!
+--     autocmd BufWritePost plugins.lua source <afile> | PackerSync
+--   augroup end
+-- ]]
+-- )
