@@ -140,7 +140,7 @@ local install_plugins =
         -- git copilot
         "github/copilot.vim",
         load_file = false,
-        disable = true,
+        disable = false,
         -- -- event = "InsertCharPre"
     },
     {
@@ -286,6 +286,10 @@ local install_plugins =
     {
         "rcarriga/nvim-notify",
         load_file = true,
+    },
+    {
+        "mphe/grayout.vim",
+        load_file = false,
     },
 }
 

@@ -66,11 +66,11 @@ local servers = {
     'awk_ls',
     'bashls',
     'ccls',
-    'clangd',
+    -- 'clangd',
     'cmake',
     -- 'gopls',
     'julials',
-    -- 'zeta_note',
+    'prosemd_lsp',
     'yamlls',
     -- 'efm',
 }
